@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :incomes
   resources :fixed_expenses
   resources :expenses
   resources :batches
