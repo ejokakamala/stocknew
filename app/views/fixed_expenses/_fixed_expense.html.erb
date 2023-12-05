@@ -1,0 +1,37 @@
+<div id="<%= dom_id fixed_expense %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Date in:</strong>
+    <%= fixed_expense.date_in %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Type of expense:</strong>
+    <%= fixed_expense.type_of_expense %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Cost:</strong>
+    <%= fixed_expense.cost %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Quantity:</strong>
+    <%= fixed_expense.quantity %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Total cost:</strong>
+    <%= fixed_expense.total_cost %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Description:</strong>
+    <%= fixed_expense.description %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this fixed expense", fixed_expense, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this fixed expense", edit_fixed_expense_path(fixed_expense), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
