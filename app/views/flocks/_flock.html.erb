@@ -1,0 +1,62 @@
+<div id="<%= dom_id flock %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Batch no:</strong>
+    <%= flock.batch_no %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Date in:</strong>
+    <%= flock.date_in %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Retirement date:</strong>
+    <%= flock.retirement_date %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Source:</strong>
+    <%= flock.source %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Initial stock:</strong>
+    <%= flock.initial_stock %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Died stock:</strong>
+    <%= flock.died_stock %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Age:</strong>
+    <%= flock.age %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Notes:</strong>
+    <%= flock.notes %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Status:</strong>
+    <%= flock.status %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Sold stock:</strong>
+    <%= flock.sold_stock %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Batch:</strong>
+    <%= flock.batch_id %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this flock", flock, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this flock", edit_flock_path(flock), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
