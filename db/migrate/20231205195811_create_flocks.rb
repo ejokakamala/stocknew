@@ -2,7 +2,7 @@ class CreateFlocks < ActiveRecord::Migration[7.1]
   def change
     create_table :flocks do |t|
       t.integer :batch_no
-      t.date :date_in
+      t.datetime :date_in
       t.date :retirement_date
       t.string :source
       t.integer :initial_stock

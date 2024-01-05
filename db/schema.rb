@@ -44,7 +44,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_05_195811) do
 
   create_table "flocks", force: :cascade do |t|
     t.integer "batch_no"
-    t.date "date_in"
+    t.datetime "date_in"
     t.date "retirement_date"
     t.string "source"
     t.integer "initial_stock"
