@@ -8,9 +8,15 @@
     <%= link_to "New income", new_income_path, class: "rounded-lg py-2 px-4 bg-blue-600 text-white block font-medium" %>
   </div>
 
-  <div id="incomes" class="min-w-full">
-    <%= render @incomes %>
-  </div>
+  <script src="https://cdn.jsdelivr.net/gh/alumuko/vanilla-datetimerange-picker@latest/dist/vanilla-datetimerange-picker.js"></script>
+  <input type="text" data-controller="daterangepicker" size="24" style="text-align:center">
+
+  <%= form_with url: incomes_path, method: :get do |form| %>
+    <%= form.text_field :date_between, value: params[:date_between], data: { controller: "daterangepicker" } %>
+    <%= form.submit "Search" %>
+
+  <% end %>
+
 
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-8">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
