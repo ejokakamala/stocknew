@@ -1,6 +1,17 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'public#dashboard'
+  devise_scope :user do
+    authenticated :user do
+      root 'public#dashboard', as: :authenticated_root
+      get '/edit', to: 'devise/registrations#edit', as: :edit_user
+      put '/update', to: 'devise/registrations#update', as: :update_user
+    end
+  
+    unauthenticated do
+      root 'devise/sessions#new', as: :unauthenticated_root
+    end
+  end
+  
   resources :flocks
   resources :incomes
   resources :fixed_expenses
