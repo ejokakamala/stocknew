@@ -3,7 +3,15 @@ class ExpensesController < ApplicationController
 
   # GET /expenses or /expenses.json
   def index
-    @expenses = Expense.all
+    if params[:date_between]
+      starts = params[:date_between].split(" - ").first
+      starts_for_select = Date.strptime(starts, "%m/%d/%Y")
+      ends = params[:date_between].split(" - ").second
+      ends_for_select = Date.strptime(ends, "%m/%d/%Y")
+      @expenses = Expense.where(date: starts_for_select..ends_for_select)
+    else
+      @expenses = Expense.all
+    end
   end
 
   # GET /expenses/1 or /expenses/1.json

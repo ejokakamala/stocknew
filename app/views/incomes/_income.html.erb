@@ -21,7 +21,7 @@
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Total amount:</strong>
-    <%= income.total_amount %>
+    <%= income.amount %>
   </p>
 
   <p class="my-5">
@@ -31,7 +31,12 @@
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Batch:</strong>
-    <%= income.batch_id %>
+    <%= income.batch.batch_no %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Type:</strong>
+    <%= income.batch.flock_type %>
   </p>
 
   <% if action_name != "show" %>

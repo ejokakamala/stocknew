@@ -3,7 +3,15 @@ class FlocksController < ApplicationController
 
   # GET /flocks or /flocks.json
   def index
-    @flocks = Flock.all
+    if params[:date_in_between]
+      starts = params[:date_in_between].split(" - ").first
+      starts_for_select = Date.strptime(starts, "%m/%d/%Y")
+      ends = params[:date_in_between].split(" - ").second
+      ends_for_select = Date.strptime(ends, "%m/%d/%Y")
+      @flocks = Flock.where(date_in: starts_for_select..ends_for_select)
+    else
+      @flocks = Flock.all
+    end
   end
 
   # GET /flocks/1 or /flocks/1.json

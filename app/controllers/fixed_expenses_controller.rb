@@ -3,7 +3,15 @@ class FixedExpensesController < ApplicationController
 
   # GET /fixed_expenses or /fixed_expenses.json
   def index
-    @fixed_expenses = FixedExpense.all
+    if params[:date_between]
+      starts = params[:date_between].split(" - ").first
+      starts_for_select = Date.strptime(starts, "%m/%d/%Y")
+      ends = params[:date_between].split(" - ").second
+      ends_for_select = Date.strptime(ends, "%m/%d/%Y")
+      @fixed_expenses = FixedExpense.where(date: starts_for_select..ends_for_select)
+    else
+      @fixed_expenses = FixedExpense.all
+    end
   end
 
   # GET /fixed_expenses/1 or /fixed_expenses/1.json

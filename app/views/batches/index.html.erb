@@ -14,10 +14,7 @@
         <thead class="text-xs text-gray-700 uppercase bg-blue-200 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="p-4">
-                    <div class="flex items-center">
-                        <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="checkbox-all-search" class="sr-only">checkbox</label>
-                    </div>
+                   
                 </th>
                 <th scope="col" class="py-3">
                     Batch No.
@@ -48,8 +45,9 @@
                 </td>
                 
                 <td class="flex items-center py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Remove</a>
+                  <%= link_to "Show", batch, class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+                  <%= link_to 'Edit', edit_batch_path(batch), class: 'font-medium text-blue-600 dark:text-blue-500 hover:underline ms-3' %>
+                  <%= link_to 'Destroy', batch, data: { turbo_method: "delete", turbo_confirm: 'Are you sure?' }, class: 'font-medium text-red-600 dark:text-red-500 hover:underline ms-3' %>
                 </td>
             </tr>
           <% end %>

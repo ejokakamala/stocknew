@@ -12,11 +12,10 @@
 
   <body>
     <% if user_signed_in? %> 
-       <%= render "layouts/header" %>
+      <%= render "layouts/header" %>
     <% end %>
     <main class="max-w-screen-xl container mx-auto mt-8 px-5 flex">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+     
       <%= yield %>
     </main>
   </body>

@@ -3,7 +3,15 @@ class IncomesController < ApplicationController
 
   # GET /incomes or /incomes.json
   def index
-    @incomes = Income.all
+    if params[:date_between]
+      starts = params[:date_between].split(" - ").first
+      starts_for_select = Date.strptime(starts, "%m/%d/%Y")
+      ends = params[:date_between].split(" - ").second
+      ends_for_select = Date.strptime(ends, "%m/%d/%Y")
+      @incomes = Income.where(date: starts_for_select..ends_for_select)
+    else
+      @incomes = Income.all
+    end
   end
 
   # GET /incomes/1 or /incomes/1.json
