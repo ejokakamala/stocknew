@@ -1,0 +1,172 @@
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-8">
+<table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-blue-200 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+            <th scope="col" class="p-4">
+                
+            </th>
+            <th scope="col" class="p-3">
+                Batch No.
+            </th>
+            <th scope="col" class="p-3">
+                Date In
+            </th>
+            <th scope="col" class="p-3">
+                Retirement Date
+            </th>
+            <th scope="col" class="p-3">
+                Source
+            </th>
+            <th scope="col" class="p-3">
+                Initial Stock
+            </th>
+            <th scope="col" class="p-3">
+                Died Stock
+            </th>
+            <th scope="col" class="p-3">
+                Sold Stock
+            </th>
+            <th scope="col" class="p-3">
+                Current Stock
+            </th>
+            <th scope="col" class="p-3">
+                Age in Weeks
+            </th>
+            <th scope="col" class="p-3">
+                Notes
+            </th>
+            <th scope="col" class="p-3">
+                Status
+            </th>
+            <th scope="col" class="py-3">
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+      <% @batch.flocks.each do |flock| %>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <td class="w-4 p-4">
+                <div class="flex items-center">
+                    <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                </div>
+            </td>
+            <th scope="row" class="py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              <%= flock.batch.batch_no %>
+            </th>
+            <td class="p-4">
+              <%= flock.date_in.strftime('%d %b %Y') %>
+            </td>
+            <td class="p-4">
+              <%= flock.retirement_date.strftime('%d %b %Y') %>
+            </td>
+            <td class="p-4">
+              <%= flock.source %>
+            </td>
+            <td class="p-4">
+              <%= flock.initial_stock %>
+            </td>
+            <td class="p-4">
+              <%= flock.died_stock %>
+            </td>
+            <td class="p-4">
+              <%= flock.sold_stock %>
+            </td>
+            <td class="p-4">
+              <%= flock.current_stock %>
+            </td>
+            <td class="p-4">
+              <%= flock.age_in_weeks %>
+            </td>
+            <td class="p-4">
+              <%= flock.notes %>
+            </td>
+            <td class="p-4">
+              <%= flock.status %>
+            </td>
+            <td class="flex items-center p-4">
+              <%= link_to "Show", flock, class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+              <%= link_to 'Edit', edit_flock_path(flock), class: 'font-medium text-blue-600 dark:text-blue-500 hover:underline ms-3' %>
+              <%= link_to 'Destroy', flock, data: { turbo_method: "delete", turbo_confirm: 'Are you sure?' }, class: 'font-medium text-red-600 dark:text-red-500 hover:underline ms-3' %>
+            </td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>
+</div>
+
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-8">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-blue-200 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="p-4">
+                   
+                </th>
+                <th scope="col" class="py-3">
+                    Batch No.
+                </th>
+                <th scope="col" class="py-3">
+                    Date
+                </th>
+                <th scope="col" class="py-3">
+                    Category
+                </th>
+                <th scope="col" class="py-3">
+                    Quantity
+                </th>
+                <th scope="col" class="py-3">
+                    Unit Price
+                </th>
+                <th scope="col" class="py-3">
+                    Total Income
+                </th>
+                <th scope="col" class="py-3">
+                    Description
+                </th>
+                <th scope="col" class="py-3">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+          <% @batch.incomes.each do |income| %>
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <td class="w-4 p-4">
+                    <div class="flex items-center">
+                        <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                    </div>
+                </td>
+                <th scope="row" class="py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  <%= income.batch.batch_no %>
+                </th>
+                <td class="py-4">
+                  <%= income.date.strftime('%d %b %Y') %>
+                </td>
+                <td class="py-4">
+                  <%= income.category %>
+                </td>
+                <td class="py-4">
+                  <%= income.quantity %>
+                </td>
+                <td class="py-4">
+                  <%= income.unit_price %>
+                </td>
+                <td class="py-4">
+                  <%= number_to_currency(income.amount, :unit => "") %>
+                </td>
+                <td class="py-4">
+                  <%= income.description %>
+                </td>
+                
+                <td class="flex items-center py-4">
+                  <%= link_to "Show", income, class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+                  <%= link_to 'Edit', edit_income_path(income), class: 'font-medium text-blue-600 dark:text-blue-500 hover:underline ms-3' %>
+                  <%= link_to 'Destroy', income, data: { turbo_method: "delete", turbo_confirm: 'Are you sure?' }, class: 'font-medium text-red-600 dark:text-red-500 hover:underline ms-3' %>
+                </td>
+            </tr>
+          <% end %>
+        </tbody>
+    </table>

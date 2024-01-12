@@ -13,11 +13,13 @@
   <body>
     <% if user_signed_in? %> 
       <%= render "layouts/header" %>
+
     <% end %>
-    <main class="max-w-screen-xl container mx-auto mt-8 px-5 flex">
+    <main class="max-w-screen-xl container mx-auto my-10 px-5 flex">
      
       <%= yield %>
     </main>
-    <%= render "layouts/footer" %>
+
+    
   </body>
 </html>
