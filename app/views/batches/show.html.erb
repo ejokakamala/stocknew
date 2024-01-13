@@ -1,8 +1,16 @@
-<div class="mx-auto md:w-2/3 w-full flex mt-14">
+<div class="mx-auto overflow-x-auto w-full flex mt-14">
   <div class="mx-auto">
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
+    <div>
+      <%= render @batch %>
+      <div class="btn">
+        <%= link_to "Edit this batch", edit_batch_path(@batch), class: "btn-secondary" %> 
+        <%= link_to "Back to batches", batches_path, class: "btn-back" %>
+        <%= button_to "Destroy this batch", batch_path(@batch), data: { turbo_method: "delete", turbo_confirm: 'Are you sure?' }, class: "btn-danger" %>
+      </div>
+    </div>
 
     <%= render "batches/batch_summary" %>
 
