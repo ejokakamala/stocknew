@@ -46,15 +46,15 @@
                 <%= batch.flocks.map(&:current_stock).sum %>
               </td>
               <td class="py-4">
-                <%= number_to_currency(batch.incomes.map(&:amount).sum, :unit => "Tshs. ", :delimiter => ",") %>
+                <%= number_to_currency(batch.incomes.map(&:amount).sum, :unit => "/=", precision: 0, format: "%n %u") %>
               </td>
               <td class="py-4">
-                <%= number_to_currency(batch.expenses.map(&:total).sum, :unit => "Tshs. ", :delimiter => ",") %>
+                <%= number_to_currency(batch.expenses.map(&:total).sum, :unit => "/=", precision: 0, format: "%n %u") %>
               </td>
               <td class="py-4">
                 <% if batch.incomes.map(&:amount).sum > batch.expenses.map(&:total).sum %>
                 <span class="text-success">
-                  <strong><%= number_to_currency(batch.incomes.map(&:amount).sum - batch.expenses.map(&:total).sum, :unit => "Tshs. ") %><strong>
+                  <strong><%= number_to_currency(batch.incomes.map(&:amount).sum - batch.expenses.map(&:total).sum, precision: 0, :unit => "/=", format: "%n %u") %><strong>
                 </span>
                 <% else %>
                   <span class="text-danger"><strong> 0</strong></span>
@@ -63,7 +63,7 @@
               <td class="py-4">
                 <% if batch.incomes.map(&:amount).sum < batch.expenses.map(&:total).sum %>
                   <span class="text-danger">
-                    <strong><%= number_to_currency(batch.expenses.map(&:total).sum - batch.incomes.map(&:amount).sum, :unit => "Tshs. ")  %><strong>
+                    <strong><%= number_to_currency(batch.expenses.map(&:total).sum - batch.incomes.map(&:amount).sum, precision: 0, :unit => "Tshs. ")  %><strong>
                   </span>
                   <% else %>
                     <span class="text-success"><strong>0</strong></span>
