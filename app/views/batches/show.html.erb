@@ -4,7 +4,7 @@
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
-    <div class="flex justify-between">
+    <div class="flex justify-between mb-5">
       <div>
         <%= render @batch %>
         <div class="flex my-5">
@@ -14,34 +14,32 @@
         </div>
       </div>
 
-      <div>
-        <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-xl dark:bg-gray-800 dark:border-gray-700">
-          <div>
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-green-900 dark:text-white">Profit from this batch</h5>
-            
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              <% if @batch.incomes.map(&:amount).sum > @batch.expenses.map(&:total).sum %>
-                <span class="text-success">
-                  <strong class="value-color"><%= number_to_currency(@batch.incomes.map(&:amount).sum - @batch.expenses.map(&:total).sum, :unit => "Tshs. ", :precision => 0) %><strong>
-                </span>
-              <% else %>
-                <span class="text-danger"><strong class="value-color"> 0</strong></span>
-              <% end %>
-            </p>
-          </div>
-          <div>
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-red-900 dark:text-white">Loss from this batch</h5>
+      <div class="max-w-xl p-6 bg-white border border-gray-200 rounded-lg shadow-xl dark:bg-gray-800 dark:border-gray-700">
+        <div>
+          <h5 class="mb-2 text-xl font-bold tracking-tight text-green-900 dark:text-white">Profit from this batch</h5>
           
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              <% if @batch.incomes.map(&:amount).sum < @batch.expenses.map(&:total).sum %>
-                <span class="text-danger">
-                  <strong class="value-color"><%= number_to_currency(@batch.expenses.map(&:total).sum - @batch.incomes.map(&:amount).sum, :unit => "Tshs. ", :precision => 0)  %><strong>
-                </span>
-              <% else %>
-                <span class="text-success"><strong class="value-color">0</strong></span>
-              <% end %>
-            </p>
-          </div>
+          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            <% if @batch.incomes.map(&:amount).sum > @batch.expenses.map(&:total).sum %>
+              <span class="text-success">
+                <strong class="value-color"><%= number_to_currency(@batch.incomes.map(&:amount).sum - @batch.expenses.map(&:total).sum, :unit => "Tshs. ", :precision => 0) %><strong>
+              </span>
+            <% else %>
+              <span class="text-danger"><strong class="value-color"> 0</strong></span>
+            <% end %>
+          </p>
+        </div>
+        <div>
+          <h5 class="mb-2 text-xl font-bold tracking-tight text-red-900 dark:text-white">Loss from this batch</h5>
+        
+          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            <% if @batch.incomes.map(&:amount).sum < @batch.expenses.map(&:total).sum %>
+              <span class="text-danger">
+                <strong class="value-color"><%= number_to_currency(@batch.expenses.map(&:total).sum - @batch.incomes.map(&:amount).sum, :unit => "Tshs. ", :precision => 0)  %><strong>
+              </span>
+            <% else %>
+              <span class="text-success"><strong class="value-color">0</strong></span>
+            <% end %>
+          </p>
         </div>
       </div>
     </div>
