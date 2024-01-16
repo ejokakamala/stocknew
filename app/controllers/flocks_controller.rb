@@ -12,6 +12,12 @@ class FlocksController < ApplicationController
     else
       @flocks = Flock.all
     end
+
+    @f = Flock.ransack(params[:q])
+    respond_to do |format|
+      format.html
+      format.csv { send_data @f.result.to_csv }
+    end
   end
 
   # GET /flocks/1 or /flocks/1.json

@@ -6,7 +6,10 @@
 
     <div class="flex justify-between">
       <h1 class="font-bold text-3xl">Flocks</h1>
-      <%= link_to "New flock", new_flock_path, class: "rounded-lg py-2 px-4 bg-blue-600 text-white block font-medium" %>
+      <div class="flex gap-2">
+        <%= link_to "Export Flock", flocks_path(format: :csv), class: "rounded-lg py-2 px-4 bg-blue-600 text-white block font-medium" %>
+        <%= link_to "Create flock", new_flock_path, class: "rounded-lg py-2 px-4 bg-blue-600 text-white block font-medium" %>
+      </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/gh/alumuko/vanilla-datetimerange-picker@latest/dist/vanilla-datetimerange-picker.js"></script>
