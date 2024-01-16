@@ -4,6 +4,12 @@ class BatchesController < ApplicationController
   # GET /batches or /batches.json
   def index
     @batches = Batch.all
+
+    @b = Batch.ransack(params[:q])
+    respond_to do |format|
+      format.html
+      format.csv { send_data @b.result.to_csv }
+    end
   end
 
   # GET /batches/1 or /batches/1.json
