@@ -12,6 +12,12 @@ class IncomesController < ApplicationController
     else
       @incomes = Income.all
     end
+
+    @inc = Income.ransack(params[:q])
+    respond_to do |format|
+      format.html
+      format.csv { send_data @inc.result.to_csv }
+    end
   end
 
   # GET /incomes/1 or /incomes/1.json
