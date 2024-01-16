@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2024_01_07_125357) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "batches", force: :cascade do |t|
     t.integer "batch_no"
     t.string "flock_type"
@@ -25,7 +28,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_07_125357) do
     t.integer "unit_price"
     t.integer "total_amount"
     t.text "description"
-    t.integer "batch_id", null: false
+    t.bigint "batch_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["batch_id"], name: "index_expenses_on_batch_id"
@@ -53,7 +56,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_07_125357) do
     t.text "notes"
     t.string "status"
     t.integer "sold_stock", default: 0
-    t.integer "batch_id", null: false
+    t.bigint "batch_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["batch_id"], name: "index_flocks_on_batch_id"
@@ -66,7 +69,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_07_125357) do
     t.integer "unit_price"
     t.integer "total_amount"
     t.text "description"
-    t.integer "batch_id", null: false
+    t.bigint "batch_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["batch_id"], name: "index_incomes_on_batch_id"

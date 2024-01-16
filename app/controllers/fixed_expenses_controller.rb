@@ -10,7 +10,7 @@ class FixedExpensesController < ApplicationController
       ends_for_select = Date.strptime(ends, "%m/%d/%Y")
       @fixed_expenses = FixedExpense.where(date_in: starts_for_select..ends_for_select)
     else
-      @fixed_expenses = FixedExpense.order(:batch_id).page(params[:page])
+      @fixed_expenses = FixedExpense.order(params[:id]).page(params[:page])
     end
 
     @exp = FixedExpense.ransack(params[:q])

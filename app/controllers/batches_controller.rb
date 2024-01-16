@@ -3,7 +3,7 @@ class BatchesController < ApplicationController
 
   # GET /batches or /batches.json
   def index
-    @batches = Batch.order(:batch_id).page(params[:page])
+    @batches = Batch.page(params[:page])
 
     @b = Batch.ransack(params[:q])
     respond_to do |format|
