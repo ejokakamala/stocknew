@@ -1,9 +1,13 @@
 
 <div class="mx-auto md:w-2/3 w-full mt-14">
-  <h1 class="font-bold text-4xl">Editing batch</h1>
+  <div class="flex justify-between">
+    <h1 class="font-bold text-4xl">Editing batch</h1>
+    <div>
+      <%= link_to "Show this batch", @batch, class: "ml-2 rounded-lg py-3 text-white px-5 bg-blue-700 inline-block font-medium" %>
+      <%= link_to "Back to batches", batches_path, class: "ml-2 rounded-lg py-3 text-white px-5 bg-gray-800 inline-block font-medium" %>
+    </div>
+  </div>
 
   <%= render "form", batch: @batch %>
 
-  <%= link_to "Show this batch", @batch, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "Back to batches", batches_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-</div>
+ </div>
