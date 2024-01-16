@@ -1,7 +1,8 @@
 <div class="mx-auto md:w-2/3 w-full mt-14">
-  <h1 class="font-bold text-3xl">New expense</h1>
-
+  <div class="flex justify-between">
+    <h1 class="font-bold text-3xl">New expense</h1>
+    <%= link_to "Back to expenses", expenses_path, class: "ml-2 rounded-lg py-2 px-4 text-white bg-gray-600 inline-block font-medium" %>
+  </div>
   <%= render "form", expense: @expense %>
 
-  <%= link_to "Back to expenses", expenses_path, class: "ml-2 rounded-lg py-2 px-4 bg-gray-100 inline-block font-medium" %>
 </div>
