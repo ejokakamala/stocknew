@@ -66,3 +66,6 @@ end
 
 
 gem "devise", "~> 4.9"
+
+gem "kaminari", "~> 1.2"
+gem "ransack", "~> 4.1"
