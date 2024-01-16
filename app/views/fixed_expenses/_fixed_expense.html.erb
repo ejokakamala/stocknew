@@ -1,37 +1,67 @@
 <div id="<%= dom_id fixed_expense %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Date in:</strong>
-    <%= fixed_expense.date_in %>
-  </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Type of expense:</strong>
-    <%= fixed_expense.type_of_expense %>
-  </p>
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+  <thead class="text-xs text-gray-700 uppercase bg-blue-200 dark:bg-gray-700 dark:text-gray-400">
+      <tr>
+          <th scope="col" class="p-4">
+              
+          </th>
+          <th scope="col" class="py-3">
+              Date
+          </th>
+          <th scope="col" class="py-3">
+              Type of Expense
+          </th>
+          <th scope="col" class="py-3">
+              Unit Cost
+          </th>
+          <th scope="col" class="py-3">
+              Quantity
+          </th>
+          <th scope="col" class="py-3">
+              Total Cost
+          </th>
+          <th scope="col" class="py-3">
+              Description
+          </th>
+          <th scope="col" class="py-3">
+              Action
+          </th>
+      </tr>
+  </thead>
+  <tbody>
+    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+      <td class="w-4 p-4">
+        <div class="flex items-center">
+          <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+          <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+        </div>
+      </td>
+      <th scope="row" class="py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+        <%= fixed_expense.date_in.strftime('%d %b %Y') %>
+      </th>
+      <td class="py-4">
+        <%= fixed_expense.type_of_expense %>
+      </td>
+      <td class="py-4">
+        <%= fixed_expense.cost %>
+      </td>
+      <td class="py-4">
+        <%= fixed_expense.quantity %>
+      </td>
+      <td class="py-4">
+        <%= number_to_currency(fixed_expense.total, :unit => "") %>
+      </td>
+      <td class="py-4">
+        <%= fixed_expense.description %>
+      </td>
+      <td class="flex items-center py-4">
+        <%= link_to "Back", fixed_expenses_path, class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-1 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
+        <%= link_to 'Edit', edit_fixed_expense_path(fixed_expense), class: 'text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-1 me-2 mb-2 dark:bg-gray-600 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800' %>
+        <%= link_to 'Destroy', fixed_expense, data: { turbo_method: "delete", turbo_confirm: 'Are you sure?' }, class: "text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-1 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800" %>
+      </td>
+    </tr>
+  </tbody>
+  </table>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Cost:</strong>
-    <%= fixed_expense.cost %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Quantity:</strong>
-    <%= fixed_expense.quantity %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Total cost:</strong>
-    <%= fixed_expense.total %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Description:</strong>
-    <%= fixed_expense.description %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this fixed expense", fixed_expense, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Edit this fixed expense", edit_fixed_expense_path(fixed_expense), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
 </div>
