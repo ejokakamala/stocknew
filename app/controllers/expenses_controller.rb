@@ -10,7 +10,7 @@ class ExpensesController < ApplicationController
       ends_for_select = Date.strptime(ends, "%m/%d/%Y")
       @expenses = Expense.where(date: starts_for_select..ends_for_select)
     else
-      @expenses = Expense.all
+      @expenses = Expense.order(:batch_id).page(params[:page])
     end
 
     @exp = Expense.ransack(params[:q])

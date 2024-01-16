@@ -1,6 +1,8 @@
 require 'csv'
 
 class Flock < ApplicationRecord
+  paginates_per 10
+
   belongs_to :batch
 
   def current_stock

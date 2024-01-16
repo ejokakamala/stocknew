@@ -10,7 +10,7 @@ class FlocksController < ApplicationController
       ends_for_select = Date.strptime(ends, "%m/%d/%Y")
       @flocks = Flock.where(date_in: starts_for_select..ends_for_select)
     else
-      @flocks = Flock.all
+      @flocks = Flock.order(:batch_id).page(params[:page])
     end
 
     @f = Flock.ransack(params[:q])

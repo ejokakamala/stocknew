@@ -1,8 +1,9 @@
 require 'csv'
 
 class Income < ApplicationRecord
-  belongs_to :batch
+  paginates_per 10
 
+  belongs_to :batch
   
   def amount
     unit_price.to_i * quantity.to_i
