@@ -13,6 +13,8 @@ class FlocksController < ApplicationController
       @flocks = Flock.order(:batch_id).page(params[:page])
     end
 
+    @title = "All Flocks"
+
     @f = Flock.ransack(params[:q])
     respond_to do |format|
       format.html

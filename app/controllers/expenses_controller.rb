@@ -13,6 +13,8 @@ class ExpensesController < ApplicationController
       @expenses = Expense.order(:batch_id).page(params[:page])
     end
 
+    @title = "All Expenses"
+
     @exp = Expense.ransack(params[:q])
     respond_to do |format|
       format.html

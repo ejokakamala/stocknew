@@ -13,6 +13,8 @@ class IncomesController < ApplicationController
       @incomes = Income.order(:batch_id).page(params[:page])
     end
 
+    @title = "All Incomes"
+
     @inc = Income.ransack(params[:q])
     respond_to do |format|
       format.html

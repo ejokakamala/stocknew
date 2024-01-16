@@ -13,6 +13,8 @@ class FixedExpensesController < ApplicationController
       @fixed_expenses = FixedExpense.order(params[:id]).page(params[:page])
     end
 
+    @title = "All Fixed Expenses"
+
     @exp = FixedExpense.ransack(params[:q])
     respond_to do |format|
       format.html

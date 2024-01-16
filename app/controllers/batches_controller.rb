@@ -4,6 +4,7 @@ class BatchesController < ApplicationController
   # GET /batches or /batches.json
   def index
     @batches = Batch.page(params[:page])
+    @title = "All Batches"
 
     @b = Batch.ransack(params[:q])
     respond_to do |format|
