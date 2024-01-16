@@ -12,6 +12,12 @@ class FixedExpensesController < ApplicationController
     else
       @fixed_expenses = FixedExpense.all
     end
+
+    @exp = FixedExpense.ransack(params[:q])
+    respond_to do |format|
+      format.html
+      format.csv { send_data @exp.result.to_csv }
+    end
   end
 
   # GET /fixed_expenses/1 or /fixed_expenses/1.json

@@ -13,7 +13,7 @@ class ExpensesController < ApplicationController
       @expenses = Expense.all
     end
 
-    @exp = Flock.ransack(params[:q])
+    @exp = Expense.ransack(params[:q])
     respond_to do |format|
       format.html
       format.csv { send_data @exp.result.to_csv }
