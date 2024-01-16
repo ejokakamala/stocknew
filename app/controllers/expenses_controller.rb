@@ -12,6 +12,12 @@ class ExpensesController < ApplicationController
     else
       @expenses = Expense.all
     end
+
+    @exp = Flock.ransack(params[:q])
+    respond_to do |format|
+      format.html
+      format.csv { send_data @exp.result.to_csv }
+    end
   end
 
   # GET /expenses/1 or /expenses/1.json
