@@ -13,7 +13,11 @@ Rails.application.routes.draw do
   end
   
   resources :flocks
-  resources :incomes
+  resources :incomes do
+    collection do 
+      post :import
+    end
+  end
   resources :fixed_expenses
   resources :expenses
   resources :batches
