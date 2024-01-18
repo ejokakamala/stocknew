@@ -30,7 +30,7 @@ class IncomesController < ApplicationController
     file = File.open(file)
     csv = CSV.parse(file, headers: true, col_sep: ';', quote_char: nil)
     csv.each do |row|
-      binding.b
+      #binding.b
       p row[0]
      
     end
