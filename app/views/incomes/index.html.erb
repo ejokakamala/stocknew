@@ -6,12 +6,6 @@
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-3xl">Incomes</h1>
     <div class="flex gap-2">
-    <div>
-      <%= form_with url: import_incomes_path, method: :post do |form| %>
-        <%= form.file_field :file %>     
-        <%= form.submit "Import CSV" %>    
-      <% end %>
-    </div>
       <%= link_to "Export Incomes", incomes_path(format: :csv), class: "rounded-lg py-2 px-4 bg-blue-600 text-white block font-medium" %>
       <%= link_to "New income", new_income_path, class: "rounded-lg py-2 px-4 bg-blue-600 text-white block font-medium" %>
     </div>

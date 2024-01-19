@@ -24,20 +24,27 @@ class IncomesController < ApplicationController
     end
   end
 
-  def import
-    file = params[:file]
-    return redirect_to incomes_path, notice: "Only CSV please" unless file.content_type = "text/csv"
-    file = File.open(file)
-    csv = CSV.parse(file, headers: true, col_sep: ';', quote_char: nil)
-    csv.each do |row|
-      #binding.b
-      p row[0]
+  # def import
+  #   file = params[:file]
+  #   return redirect_to incomes_path, notice: "Only CSV please" unless file.content_type = "text/csv"
+  #   file = File.open(file)
+  #   csv = CSV.parse(file, headers: true, col_sep: ';', quote_char: nil)
+  #   csv.each do |row|
+  #     #binding.b
+  #     p row[0]
      
-    end
-    #Income.import(params[:file])
-    redirect_to incomes_path, notice: "Income Data imported"
-  end
+  #   end
+  #   #Income.import(params[:file])
+  #   redirect_to incomes_path, notice: "Income Data imported"
+  # end
 
+
+  #<div>
+    #   <%= form_with url: import_incomes_path, method: :post do |form| %>
+    #     <%= form.file_field :file %>     
+    #     <%= form.submit "Import CSV" %>    
+    #   <% end %>
+    # </div>
   # GET /incomes/1 or /incomes/1.json
   def show
   end
