@@ -18,7 +18,9 @@ Rails.application.routes.draw do
       post :import
     end
   end
-  resources :fixed_expenses
+  resources :fixed_expenses do
+    collection { post :import }
+  end
   resources :expenses
   resources :batches
  

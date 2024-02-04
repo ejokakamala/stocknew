@@ -73,6 +73,11 @@ class FixedExpensesController < ApplicationController
     end
   end
 
+  def import
+    FixedExpense.import(params[:file]) 
+    redirect_to fixed_expenses_path, notice: "Fixed Expenses imported"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_fixed_expense
