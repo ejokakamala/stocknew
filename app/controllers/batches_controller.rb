@@ -64,6 +64,11 @@ class BatchesController < ApplicationController
     end
   end
 
+  def import
+    Batch.import(params[:file]) 
+    redirect_to batches_path, notice: "Batches imported"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_batch
