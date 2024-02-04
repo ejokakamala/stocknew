@@ -12,14 +12,18 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :flocks
+  resources :flocks do
+    collection { post :import }
+  end
   resources :incomes do
     collection { post :import }
   end
   resources :fixed_expenses do
     collection { post :import }
   end
-  resources :expenses
+  resources :expenses do
+    collection { post :import }
+  end
   resources :batches do 
     collection { post :import }
   end

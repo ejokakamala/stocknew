@@ -73,6 +73,11 @@ class ExpensesController < ApplicationController
     end
   end
 
+  def import
+    Expense.import(params[:file]) 
+    redirect_to expenses_path, notice: "Expenses imported"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_expense

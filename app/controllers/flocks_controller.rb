@@ -73,6 +73,11 @@ class FlocksController < ApplicationController
     end
   end
 
+  def import
+    Flock.import(params[:file]) 
+    redirect_to flocks_path, notice: "Flocks imported"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_flock
