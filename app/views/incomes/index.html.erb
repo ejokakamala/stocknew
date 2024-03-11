@@ -111,6 +111,6 @@
       <span class="font-bold">Total Income per page</span> = <%= number_to_currency(@incomes.map(&:amount).sum, :unit => "Tshs. ", :delimiter => ",") %>
     </div>
 
-    <%= paginate @incomes %>
+    # <%= paginate @incomes %>
 </div>
 
