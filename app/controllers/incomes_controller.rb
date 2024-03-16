@@ -10,7 +10,7 @@ class IncomesController < ApplicationController
       starts_for_select = Date.strptime(starts, "%m/%d/%Y")
       ends = params[:date_between].split(" - ").second
       ends_for_select = Date.strptime(ends, "%m/%d/%Y")
-      @incomes = Income.where(date: starts_for_select..ends_for_select)
+      @incomes = Income.where(date: starts_for_select..ends_for_select).page(params[:page])
     else
       @incomes = Income.order(:batch_id).page(params[:page])
     end

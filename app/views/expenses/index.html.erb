@@ -111,5 +111,4 @@
       <span class="font-bold">Total Expense per page</span> = <%= number_to_currency(@expenses.map(&:total).sum, :unit => "Tshs. ", :delimiter => ",") %>
     </div>
     
-    # <%= paginate @expenses %>
 </div>
