@@ -8,7 +8,7 @@ class FixedExpensesController < ApplicationController
       starts_for_select = Date.strptime(starts, "%m/%d/%Y")
       ends = params[:date_in_between].split(" - ").second
       ends_for_select = Date.strptime(ends, "%m/%d/%Y")
-      @fixed_expenses = FixedExpense.where(date_in: starts_for_select..ends_for_select)
+      @fixed_expenses = FixedExpense.where(date_in: starts_for_select..ends_for_select).page(params[:page])
     else
       @fixed_expenses = FixedExpense.order(params[:id]).page(params[:page])
     end
