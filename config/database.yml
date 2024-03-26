@@ -39,9 +39,9 @@ test:
 production:
   <<: *default
   url: <%= ENV["DATABASE_URL"] %>
-  database: stock_production
-  username: stock
-  password: <%= ENV["STOCK_DATABASE_PASSWORD"] %>
+  database: stocknew_production
+  username: stocknew
+  password: <%= ENV["STOCKNEW_DATABASE_PASSWORD"] %>
 
 
   # test:
