@@ -9,8 +9,12 @@ class ExpensesController < ApplicationController
       ends = params[:date_between].split(" - ").second
       ends_for_select = Date.strptime(ends, "%m/%d/%Y")
       @expenses = Expense.where(date: starts_for_select..ends_for_select).page(params[:page])
+      @total_expenses = @expenses.map(&:total).sum
+      @searched_expenses = Expense.where(date: starts_for_select..ends_for_select)
+      @total_searched_expenses = @searched_expenses.map(&:total).sum
     else
       @expenses = Expense.order(:batch_id).page(params[:page])
+      @total_expenses = @expenses.map(&:total).sum
     end
 
     @title = "All Expenses"
