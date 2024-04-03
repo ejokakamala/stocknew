@@ -58,10 +58,10 @@
               <%= flock.batch.batch_no %>
             </th>
             <td class="py-3 border border-slate-300">
-              <%= flock.date_in.strftime('%d %b %Y') %>
+              <%= flock.date_in %>
             </td>
             <td class="py-3 border border-slate-300">
-              <%= flock.retirement_date.strftime('%d %b %Y') %>
+              <%= flock.retirement_date %>
             </td>
             <td class="py-3 border border-slate-300">
               <%= flock.source %>
@@ -148,7 +148,7 @@
                   <%= income.batch.batch_no %>
                 </th>
                 <td class="py-4">
-                  <%= income.date.strftime('%d %b, %Y') %>
+                  <%= income.date %>
                 </td>
                 <td class="py-4">
                   <%= income.category %>
@@ -226,7 +226,7 @@
                   <%= expense.batch.batch_no %>
                 </th>
                 <td class="py-4">
-                  <%= expense.date.strftime('%d %b %Y') %>
+                  <%= expense.date %>
                 </td>
                 <td class="py-4">
                   <%= expense.category %>
