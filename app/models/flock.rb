@@ -10,7 +10,7 @@ class Flock < ApplicationRecord
   end
 
   def age_in_weeks
-    ((Time.now - date_in)/(86400 * 7)).round(2)
+    ((Time.now.to_date - date_in)/(86400 * 7)).round(2)
   end
 
 
