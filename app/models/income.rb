@@ -9,6 +9,19 @@ class Income < ApplicationRecord
     unit_price.to_i * quantity.to_i
   end
 
+  # def searched_amount 
+  #   if params[:date_between]
+  #     starts = params[:date_between].split(" - ").first
+  #     starts_for_select = Date.strptime(starts, "%m/%d/%Y")
+  #     ends = params[:date_between].split(" - ").second
+  #     ends_for_select = Date.strptime(ends, "%m/%d/%Y")
+  #     @incomes = Income.where(date: starts_for_select..ends_for_select).page(params[:page])
+  #     @sum = @incomes.amount
+  #   else
+  #     @sum = amount.order(:batch_id).page(params[:page])
+  #   end
+  # end
+
   def self.to_csv
     attributes = Income.column_names
 

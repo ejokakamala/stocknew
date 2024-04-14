@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_07_125357) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_14_122834) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,7 +47,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_07_125357) do
 
   create_table "flocks", force: :cascade do |t|
     t.integer "batch_no"
-    t.datetime "date_in"
+    t.date "date_in"
     t.date "retirement_date"
     t.string "source"
     t.integer "initial_stock"
