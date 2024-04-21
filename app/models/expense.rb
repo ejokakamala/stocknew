@@ -27,3 +27,7 @@ class Expense < ApplicationRecord
     end
   end
 end
+
+# <div class="my-3"
+#   <span class="font-bold">Total Expense per page</span> = <%= number_to_currency(@total_expenses, :unit => "Tshs. ", :delimiter => ",") %>
+# </div>

@@ -13,8 +13,15 @@ class ExpensesController < ApplicationController
       @searched_expenses = Expense.where(date: starts_for_select..ends_for_select)
       @total_searched_expenses = @searched_expenses.map(&:total).sum
     else
-      @expenses = Expense.order(:batch_id).page(params[:page])
-      @total_expenses = @expenses.map(&:total).sum
+      #@expenses = Expense.order(:batch_id).page(params[:page])
+      #@expenses = Expense.paginates_per(:page => params[:page], :per_page => Expense.count)
+      #@expenses = Expense.all
+      #@total_expenses = @expenses.map(&:total).sum
+      #@total_expenses = @expenses
+      @all_expenses = Expense.order(:batch_id)  
+      @total_all_expenses = @all_expenses.map(&:total).sum
+      @expenses = @all_expenses.page(params[:page])
+      @total_per_page = @expenses.map(&:total).sum
     end
 
     @title = "All Expenses"
