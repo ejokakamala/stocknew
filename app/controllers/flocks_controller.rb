@@ -10,7 +10,7 @@ class FlocksController < ApplicationController
       ends_for_select = Date.strptime(ends, "%m/%d/%Y")
       @flocks = Flock.where(date_in: starts_for_select..ends_for_select).page(params[:page])
       @total_flocks = @flocks.map(&:current_stock).sum
-      @searched_flocks = Flock.where(date: starts_for_select..ends_for_select)
+      @searched_flocks = Flock.where(date_in: starts_for_select..ends_for_select)
       @total_searched_flocks = @searched_flocks.map(&:current_stock).sum
     else
       ##@flocks = Flock.order(:batch_id).page(params[:page])
