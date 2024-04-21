@@ -100,8 +100,20 @@
   </table>
   </div>
 
-  <div class="my-3"
-      <span class="font-bold">Total Expense per page</span> = <%= number_to_currency(@fixed_expenses.map(&:cost).sum, :unit => "Tshs. ", :delimiter => ",") %>
+  <div class="my-3">
+    <span class="font-bold">Total Searched Fixed Expenses Per Page</span> = <%= number_to_currency(@total_fixed_expenses, :unit => "Tshs. ", :delimiter => ",") %>
+  </div>
+
+  <div class="my-3">  
+    <span class="font-bold">Total Searched Fixed Expenses = </span><%= number_to_currency(@total_searched_fixed_expenses, :unit => "Tshs. ", :delimiter => ",") %>
+  </div> 
+   
+  <div class="my-3">
+    <span class="font-bold">Total All Fixed Expenses</span> = <%= number_to_currency(@total_all_fixed_expenses, :unit => "Tshs. ", :delimiter => ",") %>
+  </div>
+
+  <div class="my-3">
+    <span class="font-bold">Total Fixed Expenses Per Page</span> = <%= number_to_currency(@total_fixed_per_page, :unit => "Tshs. ", :delimiter => ",") %>
   </div>
 
   <div>

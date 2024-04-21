@@ -9,8 +9,15 @@ class FixedExpensesController < ApplicationController
       ends = params[:date_in_between].split(" - ").second
       ends_for_select = Date.strptime(ends, "%m/%d/%Y")
       @fixed_expenses = FixedExpense.where(date_in: starts_for_select..ends_for_select).page(params[:page])
+      @total_fixed_expenses = @fixed_expenses.map(&:total).sum
+      @searched_fixed_expenses = FixedExpense.where(date: starts_for_select..ends_for_select)
+      @total_searched_fixed_expenses = @searched_fixed_expenses.map(&:total).sum
     else
-      @fixed_expenses = FixedExpense.order(params[:id]).page(params[:page])
+      #@fixed_expenses = FixedExpense.order(params[:id]).page(params[:page])
+      @all_fixed_expenses = FixedExpense.all  
+      @total_all_fixed_expenses = @all_fixed_expenses.map(&:total).sum
+      @fixed_expenses = @all_fixed_expenses.page(params[:page])
+      @total_fixed_per_page = @fixed_expenses.map(&:total).sum
     end
 
     @title = "All Fixed Expenses"
