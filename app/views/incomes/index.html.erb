@@ -107,8 +107,20 @@
     </table>
     </div>
 
-    <div class="my-3"
-      <span class="font-bold">Total Income per page</span> = <%= number_to_currency(@total_incomes, :unit => "Tshs. ", :delimiter => ",") %>
+    <div class="my-3">
+      <span class="font-bold">Total Searched Incomes Per Page</span> = <%= number_to_currency(@total_incomes, :unit => "Tshs. ", :delimiter => ",") %>
+    </div>
+
+    <div class="my-3">  
+      <span class="font-bold">Total Searched Incomes = </span><%= number_to_currency(@total_searched_incomes, :unit => "Tshs. ", :delimiter => ",") %>
+    </div> 
+    
+    <div class="my-3">
+      <span class="font-bold">Total All Incomes</span> = <%= number_to_currency(@total_all_incomes, :unit => "Tshs. ", :delimiter => ",") %>
+    </div>
+
+    <div class="my-3">
+      <span class="font-bold">Total Incomes Per Page</span> = <%= number_to_currency(@total_per_page, :unit => "Tshs. ", :delimiter => ",") %>
     </div>
 
     <div>

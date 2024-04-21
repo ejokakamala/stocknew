@@ -108,23 +108,22 @@
     </div>
 
   <div class="my-3">
-  <span class="font-bold">Total Searched Expenses Per Page</span> = <%= number_to_currency(@total_expenses, :unit => "Tshs. ", :delimiter => ",") %>
+    <span class="font-bold">Total Searched Expenses Per Page</span> = <%= number_to_currency(@total_expenses, :unit => "Tshs. ", :delimiter => ",") %>
   </div>
 
-<div class="my-3">  
-  <span class="font-bold">Total Searched Expenses = </span><%= number_to_currency(@total_searched_expenses, :unit => "Tshs. ", :delimiter => ",") %>
-</div> 
+  <div class="my-3">  
+    <span class="font-bold">Total Searched Expenses = </span><%= number_to_currency(@total_searched_expenses, :unit => "Tshs. ", :delimiter => ",") %>
+  </div> 
    
-    <div class="my-3">
-      <span class="font-bold">Total All Expenses</span> = <%= number_to_currency(@total_all_expenses, :unit => "Tshs. ", :delimiter => ",") %>
-    </div>
+  <div class="my-3">
+    <span class="font-bold">Total All Expenses</span> = <%= number_to_currency(@total_all_expenses, :unit => "Tshs. ", :delimiter => ",") %>
+  </div>
 
-    <div class="my-3">
-      <span class="font-bold">Total Expenses Per Page</span> = <%= number_to_currency(@total_per_page, :unit => "Tshs. ", :delimiter => ",") %>
-    </div>
-
+  <div class="my-3">
+    <span class="font-bold">Total Expenses Per Page</span> = <%= number_to_currency(@total_per_page, :unit => "Tshs. ", :delimiter => ",") %>
+  </div>
     
-    <div>
-      <%= paginate @expenses %>
-    </div>
+  <div>
+    <%= paginate @expenses %>
+  </div>
 </div>

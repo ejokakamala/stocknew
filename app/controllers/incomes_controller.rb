@@ -11,8 +11,15 @@ class IncomesController < ApplicationController
       ends = params[:date_between].split(" - ").second
       ends_for_select = Date.strptime(ends, "%m/%d/%Y")
       @incomes = Income.where(date: starts_for_select..ends_for_select).page(params[:page])
+      @total_incomes = @incomes.map(&:amount).sum
+      @searched_incomes =Income.where(date: starts_for_select..ends_for_select)
+      @total_searched_incomes = @searched_incomes.map(&:amount).sum
     else
-      @incomes = Income.order(:batch_id).page(params[:page])
+      #@incomes = Income.order(:batch_id).page(params[:page])
+      @all_incomes = Income.order(:batch_id)  
+      @total_all_incomes = @all_incomes.map(&:amount).sum
+      @incomes = @all_incomes.page(params[:page])
+      @total_per_page = @incomes.map(&:amount).sum
     end
 
     @title = "All Incomes"
