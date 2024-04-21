@@ -131,6 +131,22 @@
     </table>
     </div>
 
+    <div class="my-3">
+      <span class="font-bold">Total Searched Flocks Per Page</span> = <%= @total_flocks %>
+    </div>
+
+    <div class="my-3">  
+      <span class="font-bold">Total Searched Flocks = </span><%= @total_searched_flocks %>
+    </div> 
+    
+    <div class="my-3">
+      <span class="font-bold">Total All Flocks</span> = <%= @total_all_flocks %>
+    </div>
+
+    <div class="my-3">
+      <span class="font-bold">Total Flocks Per Page</span> = <%= @total_flocks_per_page %>
+    </div>
+
     <div>
       <%= paginate @flocks %>
     </div>
