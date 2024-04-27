@@ -100,6 +100,12 @@
   </table>
   </div>
 
+<div class="py-4">
+  <%= paginate @fixed_expenses %>
+</div>
+
+<hr />
+
   <div class="my-3">
     <span class="font-bold">Total Searched Fixed Expenses Per Page</span> = <%= number_to_currency(@total_fixed_expenses, :unit => "Tshs. ", :delimiter => ",") %>
   </div>
@@ -116,7 +122,4 @@
     <span class="font-bold">Total Fixed Expenses Per Page</span> = <%= number_to_currency(@total_fixed_per_page, :unit => "Tshs. ", :delimiter => ",") %>
   </div>
 
-  <div>
-    <%= paginate @fixed_expenses %>
-  </div>
 </div>

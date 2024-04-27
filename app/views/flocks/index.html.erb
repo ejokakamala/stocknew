@@ -131,6 +131,12 @@
     </table>
     </div>
 
+    <div class="py-4">
+      <%= paginate @flocks %>
+    </div>
+
+    <hr />
+
     <div class="my-3">
       <span class="font-bold">Total Searched Flocks Per Page</span> = <%= @total_flocks %>
     </div>
@@ -147,7 +153,5 @@
       <span class="font-bold">Total Flocks Per Page</span> = <%= @total_flocks_per_page%>
     </div>
 
-    <div>
-      <%= paginate @flocks %>
-    </div>
+    
   </div>
