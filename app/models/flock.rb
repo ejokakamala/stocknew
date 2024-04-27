@@ -9,8 +9,12 @@ class Flock < ApplicationRecord
     initial_stock - (died_stock + sold_stock)
   end
 
+  # def age_in_weeks
+  #   ((Time.now.to_date - date_in)/7).to_f.round(1)
+  # end
+
   def age_in_weeks
-    ((Time.now.to_date - date_in)/7).to_f.round(1)
+    ((retirement_date - date_in)/7).to_f.round(1)
   end
 
   def self.to_csv
