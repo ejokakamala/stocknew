@@ -44,7 +44,7 @@ class FlocksController < ApplicationController
 
   # POST /flocks or /flocks.json
   def create
-    @flock = Flock.new(flock_params)
+    @flock = current_user.flocks.new(flock_params)
 
     respond_to do |format|
       if @flock.save

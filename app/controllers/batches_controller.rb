@@ -28,7 +28,7 @@ class BatchesController < ApplicationController
 
   # POST /batches or /batches.json
   def create
-    @batch = Batch.new(batch_params)
+    @batch = current_user.batches.new(batch_params)
 
     respond_to do |format|
       if @batch.save
