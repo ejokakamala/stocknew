@@ -1,31 +1,31 @@
 <div>
   <h3 class="font-bold text-3xl mx-4 text-underline text-white text-center bg-blue-700">Summary by Batches </h3>
   <div class="rounded-lg md:p-8 border-t m-4 border-gray-200 relative overflow-x-auto shadow-md sm:rounded-lg mt-8">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border-collapse border rounded-lg border-slate-200">
       <thead class="text-xs text-gray-700 uppercase bg-blue-200 dark:bg-gray-700 dark:text-gray-400">
         <tr>
-          <th scope="col" class="p-4">
+          <th scope="col" class="p-4 border border-slate-300">
               
           </th>
-          <th scope="col" class="py-3">
+          <th scope="col" class="py-3 border border-slate-300">
               Batch No.
           </th>
-          <th scope="col" class="py-3">
+          <th scope="col" class="py-3 border border-slate-300">
               Total Flock
           </th>
-          <th scope="col" class="py-3">
+          <th scope="col" class="py-3 border border-slate-300">
               Total Income
           </th>
-          <th scope="col" class="py-3">
+          <th scope="col" class="py-3 border border-slate-300">
               Total Expenses
           </th>
-          <th scope="col" class="py-3">
+          <th scope="col" class="py-3 border border-slate-300">
               Profit
           </th>
-          <th scope="col" class="py-3">
+          <th scope="col" class="py-3 border border-slate-300">
               Loss
           </th>
-          <th scope="col" class="py-3">
+          <th scope="col" class="py-3 border border-slate-300">
               Action
           </th>
         </tr>
@@ -33,40 +33,40 @@
       <tbody>
         <% @batches.each do |batch| %>
           <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <td class="w-4 p-4">
+            <td class="w-4 p-4 border border-slate-300">
               <div class="flex items-center">
                 <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                 <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
               </div>
             </td>
-            <th scope="row" class="py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <th scope="row" class="p-4 font-medium text-gray-900 whitespace-nowrap dark:text-white border border-slate-300">
               <%= batch.batch_no %>
             </th>
-            <td class="py-4">
+            <td class="p-4 text-right font-medium text-gray-900 whitespace-nowrap dark:text-white border border-slate-300">
               <%= batch.flocks.map(&:current_stock).sum %>
             </td>
-            <td class="py-4">
-              <%= number_to_currency(batch.incomes.map(&:amount).sum, :unit => "/=", precision: 0, format: "%n %u") %>
+            <td class="p-4 text-right font-medium text-gray-900 whitespace-nowrap dark:text-white border border-slate-300">
+              <%= number_to_currency(batch.incomes.map(&:amount).sum, :unit => "/=", precision: 0, format: "%n%u") %>
             </td>
-            <td class="py-4">
-              <%= number_to_currency(batch.expenses.map(&:total).sum, :unit => "/=", precision: 0, format: "%n %u") %>
+            <td class="p-4 text-right font-medium text-gray-900 whitespace-nowrap dark:text-white border border-slate-300">
+              <%= number_to_currency(batch.expenses.map(&:total).sum, :unit => "/=", precision: 0, format: "%n%u") %>
             </td>
-            <td class="py-4">
+            <td class="p-4 text-right font-medium text-gray-900 whitespace-nowrap dark:text-white border border-slate-300">
               <% if batch.incomes.map(&:amount).sum > batch.expenses.map(&:total).sum %>
-              <span class="text-success">
-                <strong><%= number_to_currency(batch.incomes.map(&:amount).sum - batch.expenses.map(&:total).sum, precision: 0, :unit => "/=", format: "%n %u") %><strong>
+              <span class="font-bold text-green-600">
+                <%= number_to_currency(batch.incomes.map(&:amount).sum - batch.expenses.map(&:total).sum, precision: 0, :unit => "/=", format: "%n%u") %>
               </span>
               <% else %>
-                <span class="text-danger"><strong> 0</strong></span>
+                <span> 0 </span>
               <% end %>
             </td>
-            <td class="py-4">
+            <td class="p-4 text-right font-medium text-gray-900 whitespace-nowrap dark:text-white border border-slate-300">
               <% if batch.incomes.map(&:amount).sum < batch.expenses.map(&:total).sum %>
-                <span class="text-danger">
-                  <strong><%= number_to_currency(batch.expenses.map(&:total).sum - batch.incomes.map(&:amount).sum, precision: 0, :unit => "Tshs. ")  %><strong>
+                <span class="font-bold text-red-600">
+                  <%= number_to_currency(batch.expenses.map(&:total).sum - batch.incomes.map(&:amount).sum, precision: 0, :unit => "/=", format: "%n%u")  %>
                 </span>
                 <% else %>
-                  <span class="text-success"><strong>0</strong></span>
+                  <span> 0 </span>
               <% end %>
             </td>
             
