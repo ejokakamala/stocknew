@@ -56,37 +56,37 @@
           <th scope="row" class="py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
             <%= flock.batch.batch_no %>
           </th>
-          <td class="py-4">
+          <td class="py-4 pl-2">
             <%= flock.date_in.strftime('%d %b %Y') %>
           </td>
-          <td class="py-4">
+          <td class="py-4 pl-2">
             <%= flock.retirement_date.strftime('%d %b %Y') %>
           </td>
-          <td class="py-4">
-            <%= flock.source %>
+          <td class="py-4 pl-2">
+            <%= flock.source.capitalize %>
           </td>
-          <td class="py-4">
+          <td class="py-4 pr-2 text-right">
             <%= flock.initial_stock %>
           </td>
-          <td class="py-4">
+          <td class="py-4 pr-2 text-right">
             <%= flock.died_stock %>
           </td>
-          <td class="py-4">
+          <td class="py-4 pr-2 text-right">
             <%= flock.sold_stock %>
           </td>
-          <td class="py-4">
+          <td class="py-4 pr-2 text-right">
             <%= flock.current_stock %>
           </td>
-          <td class="py-4">
+          <td class="py-4 pr-2 text-right">
             <%= flock.age_in_weeks %>
           </td>
-          <td class="py-4">
-            <%= flock.notes %>
+          <td class="py-4 pl-2">
+            <%= flock.notes.capitalize %>
           </td>
-          <td class="py-4">
-            <%= flock.status %>
+          <td class="py-4 pl-2">
+            <%= flock.status.capitalize %>
           </td>
-          <td class="flex items-center py-4">
+          <td class="flex items-center py-4 pl-2">
             <%= link_to "back", flocks_path, class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-1 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
             <%= link_to 'Edit', edit_flock_path(flock), class: 'text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-3 py-1 me-2 mb-2 dark:bg-gray-600 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800' %>
             <%= link_to 'Destroy', flock, data: { turbo_method: "delete", turbo_confirm: 'Are you sure?' }, class: "text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-xs px-3 py-1 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800" %>
