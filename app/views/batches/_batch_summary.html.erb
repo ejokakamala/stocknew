@@ -57,34 +57,34 @@
             <th scope="row" class="py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
               <%= flock.batch.batch_no %>
             </th>
-            <td class="py-3 border border-slate-300">
+            <td class="py-3 border border-slate-300 font-medium text-gray-900 whitespace-nowrap dark:text-white">
               <%= flock.date_in %>
             </td>
-            <td class="py-3 border border-slate-300">
+            <td class="py-3 border border-slate-300 font-medium text-gray-900 whitespace-nowrap dark:text-white">
               <%= flock.retirement_date %>
             </td>
-            <td class="py-3 border border-slate-300">
+            <td class="py-3 border border-slate-300 font-medium text-gray-900 whitespace-nowrap dark:text-white">
               <%= flock.source %>
             </td>
-            <td class="py-3 border border-slate-300">
+            <td class="py-3 pr-4 text-right border border-slate-300 font-medium text-gray-900 whitespace-nowrap dark:text-white">
               <%= flock.initial_stock %>
             </td>
-            <td class="py-3 border border-slate-300">
+            <td class="py-3 pr-4 text-right border border-slate-300 font-medium text-gray-900 whitespace-nowrap dark:text-white">
               <%= flock.died_stock %>
             </td>
-            <td class="py-3 border border-slate-300">
+            <td class="py-3 pr-4 text-right border border-slate-300 font-medium text-gray-900 whitespace-nowrap dark:text-white">
               <%= flock.sold_stock %>
             </td>
-            <td class="py-3 border border-slate-300">
+            <td class="py-3 pr-4 text-right border border-slate-300 font-medium text-gray-900 whitespace-nowrap dark:text-white">
               <%= flock.current_stock %>
             </td>
-            <td class="py-3 border border-slate-300">
+            <td class="py-3 pr-4 text-right border border-slate-300 font-medium text-gray-900 whitespace-nowrap dark:text-white">
               <%= flock.age_in_weeks %>
             </td>
-            <td class="py-3 border border-slate-300">
+            <td class="py-3 border border-slate-300 font-medium text-gray-900 whitespace-nowrap dark:text-white">
               <%= flock.notes %>
             </td>
-            <td class="py-3 border border-slate-300">
+            <td class="py-3 border border-slate-300 font-medium text-gray-900 whitespace-nowrap dark:text-white">
               <%= flock.status %>
             </td>
             <td class="flex items-center py-4 border border-slate-300">
@@ -147,22 +147,22 @@
                 <th scope="row" class="py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   <%= income.batch.batch_no %>
                 </th>
-                <td class="py-4">
+                <td class="py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   <%= income.date %>
                 </td>
-                <td class="py-4">
+                <td class="py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   <%= income.category %>
                 </td>
-                <td class="py-4">
+                <td class="py-4 pr-4 text-right font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   <%= income.quantity %>
                 </td>
-                <td class="py-4">
+                <td class="py-4 pr-4 text-right font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   <%= income.unit_price %>
                 </td>
-                <td class="py-4">
+                <td class="py-4 pr-4 text-right font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   <%= number_to_currency(income.amount, :unit => "") %>
                 </td>
-                <td class="py-4">
+                <td class="py-4 pl-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   <%= income.description %>
                 </td>
                 
@@ -225,22 +225,22 @@
                 <th scope="row" class="py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   <%= expense.batch.batch_no %>
                 </th>
-                <td class="py-4">
+                <td class="py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   <%= expense.date %>
                 </td>
-                <td class="py-4">
+                <td class="py-4 pl-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   <%= expense.category %>
                 </td>
-                <td class="py-4">
+                <td class="py-4 pr-4 text-right font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   <%= expense.quantity %>
                 </td>
-                <td class="py-4">
+                <td class="py-4 pr-4 text-right font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   <%= expense.unit_price %>
                 </td>
-                <td class="py-4">
+                <td class="py-4 pr-4 text-right font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   <%= number_to_currency(expense.total, :unit => "") %>
                 </td>
-                <td class="py-4">
+                <td class="py-4 pl-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   <%= expense.description %>
                 </td>
                 
