@@ -64,7 +64,7 @@
               <%= flock.retirement_date %>
             </td>
             <td class="py-3 border border-slate-300 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-              <%= flock.source %>
+              <%= flock.source.capitalize %>
             </td>
             <td class="py-3 pr-4 text-right border border-slate-300 font-medium text-gray-900 whitespace-nowrap dark:text-white">
               <%= flock.initial_stock %>
@@ -82,10 +82,10 @@
               <%= flock.age_in_weeks %>
             </td>
             <td class="py-3 border border-slate-300 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-              <%= flock.notes %>
+              <%= flock.notes.capitalize %>
             </td>
             <td class="py-3 border border-slate-300 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-              <%= flock.status %>
+              <%= flock.status.capitalize %>
             </td>
             <td class="flex items-center py-4 border border-slate-300">
               <%= link_to "Show", flock, class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-1 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
@@ -151,7 +151,7 @@
                   <%= income.date %>
                 </td>
                 <td class="py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  <%= income.category %>
+                  <%= income.category.capitalize %>
                 </td>
                 <td class="py-4 pr-4 text-right font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   <%= income.quantity %>
@@ -163,7 +163,7 @@
                   <%= number_to_currency(income.amount, :unit => "") %>
                 </td>
                 <td class="py-4 pl-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  <%= income.description %>
+                  <%= income.description.capitalize %>
                 </td>
                 
                 <td class="flex items-center py-4">
@@ -229,7 +229,7 @@
                   <%= expense.date %>
                 </td>
                 <td class="py-4 pl-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  <%= expense.category %>
+                  <%= expense.category.capitalize %>
                 </td>
                 <td class="py-4 pr-4 text-right font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   <%= expense.quantity %>
@@ -241,7 +241,7 @@
                   <%= number_to_currency(expense.total, :unit => "") %>
                 </td>
                 <td class="py-4 pl-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  <%= expense.description %>
+                  <%= expense.description.capitalize %>
                 </td>
                 
                 <td class="flex items-center py-4">

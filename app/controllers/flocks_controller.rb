@@ -17,7 +17,7 @@ class FlocksController < ApplicationController
       @all_flocks = Flock.order(:batch_id)  
       @total_all_flocks = @all_flocks.map(&:current_stock).sum
       @flocks = @all_flocks.page(params[:page])
-      @total_per_flocks_page = @flocks.map(&:current_stock).sum
+      @total_per_flocks_page = @flocks.map(&:current_stock).sum 
     end
 
     @title = "All Flocks"
