@@ -1,11 +1,11 @@
-<div class="mx-auto overflow-x-auto w-full flex mt-14">
+<div class="mx-auto w-full flex mt-14">
   <div class="mx-auto">
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
-    <div class="flex justify-between mb-5">
-      <div>
+    <div class="flex flex-col gap-6 justify-between mb-5 sm:flex-row">
+      <div class="max-w-xl p-6 bg-white border border-gray-200 rounded-lg shadow-xl dark:bg-gray-800 dark:border-gray-700">
         <%= render @batch %>
         <div class="flex my-5">
           <%= link_to "Edit this batch", edit_batch_path(@batch), class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %> 
@@ -15,21 +15,21 @@
       </div>
 
       <div class="max-w-xl p-6 bg-white border border-gray-200 rounded-lg shadow-xl dark:bg-gray-800 dark:border-gray-700">
-        <div>
-          <h5 class="mb-2 text-xl font-bold tracking-tight text-green-900 dark:text-white">Profit from this batch</h5>
+        <div class="gap-4">
+          <h5 class="mb-2 text-xl px-4 bg-blue-200 rounded-sm tracking-tight text-green-600 dark:text-white">Profit from this batch</h5>
           
           <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
             <% if @batch.incomes.map(&:amount).sum > @batch.expenses.map(&:total).sum %>
-              <span class="text-success">
-                <strong class="value-color"><%= number_to_currency(@batch.incomes.map(&:amount).sum - @batch.expenses.map(&:total).sum, :unit => "Tshs. ", :precision => 0) %><strong>
+              <span class="text-green-700 font-bold">
+                <%= number_to_currency(@batch.incomes.map(&:amount).sum - @batch.expenses.map(&:total).sum, :unit => "Tshs. ", :precision => 0) %>
               </span>
             <% else %>
-              <span class="text-danger"><strong class="value-color"> 0</strong></span>
+              <span class="text-red-700 font-bold">0</span>
             <% end %>
           </p>
         </div>
         <div>
-          <h5 class="mb-2 text-xl font-bold tracking-tight text-red-900 dark:text-white">Loss from this batch</h5>
+          <h5 class="mb-2 text-xl px-4 bg-blue-200 rounded-sm tracking-tight text-red-600 dark:text-white">Loss from this batch</h5>
         
           <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
             <% if @batch.incomes.map(&:amount).sum < @batch.expenses.map(&:total).sum %>
@@ -45,6 +45,8 @@
     </div>
     <hr class="my-10" />
     
+    
     <%= render "batches/batch_summary" %>
+  
   </div>
 </div>
