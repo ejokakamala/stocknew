@@ -5,12 +5,14 @@ Rails.application.routes.draw do
       root 'public#dashboard', as: :authenticated_root
       get '/edit', to: 'devise/registrations#edit', as: :edit_user
       put '/update', to: 'devise/registrations#update', as: :update_user
+      get '/import', to: 'public#import'
     end
   
     unauthenticated do
       root 'devise/sessions#new', as: :unauthenticated_root
     end
   end
+
   
   resources :flocks do
     collection { post :import }
