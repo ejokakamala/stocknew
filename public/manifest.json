@@ -1,6 +1,6 @@
 {
   "name": "FlockApp",
-  "short_name": "flockapp",
+  "short_name": "FlockApp",
   "start_url": "/",
   "id": "/",
   "display": "standalone",
