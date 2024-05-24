@@ -1,4 +1,5 @@
 class BatchesController < ApplicationController
+  before_action :current_user
   before_action :set_batch, only: %i[ show edit update destroy ]
 
   # GET /batches or /batches.json

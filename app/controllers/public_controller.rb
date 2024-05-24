@@ -1,4 +1,6 @@
 class PublicController < ApplicationController
+  before_action :current_user
+
   def dashboard
     @incomes = Income.all
     @expenses = Expense.all

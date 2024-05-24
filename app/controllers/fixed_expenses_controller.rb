@@ -1,4 +1,5 @@
 class FixedExpensesController < ApplicationController
+  before_action :current_user
   before_action :set_fixed_expense, only: %i[ show edit update destroy ]
 
   # GET /fixed_expenses or /fixed_expenses.json

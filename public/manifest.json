@@ -1,0 +1,33 @@
+{
+  "name": "FlockApp",
+  "short_name": "flockapp",
+  "start_url": "/",
+  "id": "/",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "A manageable Flock app.",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ],
+  "screenshots" : [
+    {
+      "src": "narrow.png",
+      "sizes": "890x717",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Homescreen of Flock App"
+    },
+    {
+      "src": "wide.png",
+      "sizes": "1573x761",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "List of Awesome Resources available in Flock App"
+    }
+  ]
+  
+}

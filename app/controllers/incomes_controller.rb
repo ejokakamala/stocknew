@@ -1,6 +1,7 @@
 require 'csv'
 
 class IncomesController < ApplicationController
+  before_action :current_user
   before_action :set_income, only: %i[ show edit update destroy ]
 
   # GET /incomes or /incomes.json
