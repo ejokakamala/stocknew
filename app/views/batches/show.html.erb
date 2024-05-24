@@ -1,16 +1,16 @@
-<div class="mx-auto w-full flex mt-14">
+<div class="w-full mt-14">
   <div class="mx-auto">
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
     <div class="flex flex-col gap-6 justify-between mb-5 sm:flex-row">
-      <div class="max-w-xl p-6 bg-white border border-gray-200 rounded-lg shadow-xl dark:bg-gray-800 dark:border-gray-700">
+      <div class="p-3 bg-white border border-gray-200 rounded-lg shadow-xl dark:bg-gray-800 dark:border-gray-700">
         <%= render @batch %>
-        <div class="flex my-5">
-          <%= link_to "Edit this batch", edit_batch_path(@batch), class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %> 
-          <%= link_to "Back to batches", batches_path, class: "text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-600 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800" %>
-          <%= button_to "Destroy this batch", batch_path(@batch), data: { turbo_method: "delete", turbo_confirm: 'Are you sure?' }, class: "text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800" %>
+        <div class="flex flex-col gap-3 sm:flex-row my-5">
+          <%= link_to "Edit this batch", edit_batch_path(@batch), class: "text-white text-center w-full sm:w-1/3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %> 
+          <%= link_to "Back to batches", batches_path, class: "text-white text-center w-full sm:w-1/3 bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:ring-gray-300 rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-600 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800" %>
+          <%= button_to "Destroy batch", batch_path(@batch), data: { turbo_method: "delete", turbo_confirm: 'Are you sure?' }, class: "text-white text-center w-full bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800" %>
         </div>
       </div>
 
