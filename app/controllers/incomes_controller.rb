@@ -10,13 +10,13 @@ class IncomesController < ApplicationController
       starts_for_select = Date.strptime(starts, "%m/%d/%Y")
       ends = params[:date_between].split(" - ").second
       ends_for_select = Date.strptime(ends, "%m/%d/%Y")
-      @incomes = Income.where(date: starts_for_select..ends_for_select).page(params[:page])
+      @incomes = current_user.incomes.where(date: starts_for_select..ends_for_select).page(params[:page])
       @total_incomes = @incomes.map(&:amount).sum
-      @searched_incomes =Income.where(date: starts_for_select..ends_for_select)
+      @searched_incomes = current_user.incomes.where(date: starts_for_select..ends_for_select)
       @total_searched_incomes = @searched_incomes.map(&:amount).sum
     else
       #@incomes = Income.order(:batch_id).page(params[:page])
-      @all_incomes = Income.order(:batch_id)  
+      @all_incomes = current_user.incomes.order(:batch_id)  
       @total_all_incomes = @all_incomes.map(&:amount).sum
       @incomes = @all_incomes.page(params[:page])
       @total_per_page = @incomes.map(&:amount).sum
@@ -24,7 +24,7 @@ class IncomesController < ApplicationController
 
     @title = "All Incomes"
 
-    @inc = Income.ransack(params[:q])
+    @inc = current_user.incomes.ransack(params[:q])
     respond_to do |format|
       format.html
       format.csv { send_data @inc.result.to_csv }
@@ -42,7 +42,7 @@ class IncomesController < ApplicationController
 
   # GET /incomes/new
   def new
-    @income = Income.new
+    @income = current_user.incomes.new
   end
 
   # GET /incomes/1/edit
@@ -51,7 +51,7 @@ class IncomesController < ApplicationController
 
   # POST /incomes or /incomes.json
   def create
-    @income = Income.new(income_params)
+    @income = current_user.incomes.build(income_params)
 
     respond_to do |format|
       if @income.save
@@ -90,7 +90,7 @@ class IncomesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_income
-      @income = Income.find(params[:id])
+      @income = current_user.incomes.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

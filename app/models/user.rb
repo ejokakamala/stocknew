@@ -7,4 +7,5 @@ class User < ApplicationRecord
 
 
   has_many :batches
+  has_many :incomes
 end

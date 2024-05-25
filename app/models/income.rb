@@ -4,6 +4,7 @@ class Income < ApplicationRecord
   paginates_per 10
 
   belongs_to :batch
+  belongs_to :user
   
   def amount
     unit_price.to_i * quantity.to_i

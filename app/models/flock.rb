@@ -4,6 +4,7 @@ class Flock < ApplicationRecord
   paginates_per 10
 
   belongs_to :batch
+  belongs_to :user
 
   def current_stock
     initial_stock - (died_stock + sold_stock)

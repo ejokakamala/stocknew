@@ -2,6 +2,7 @@ require 'csv'
 
 class Expense < ApplicationRecord
   belongs_to :batch
+  belongs_to :user
 
   paginates_per 10
 
