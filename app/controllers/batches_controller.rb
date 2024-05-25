@@ -6,7 +6,7 @@ class BatchesController < ApplicationController
     @batches = current_user.batches.page(params[:page]).order("created_at ASC")
     @title = "All Batches"
 
-    @b = Batch.ransack(params[:q])
+    @b = current_user.batches.ransack(params[:q])
     respond_to do |format|
       format.html
       format.csv { send_data @b.result.to_csv }
