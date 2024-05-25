@@ -6,6 +6,9 @@ class User < ApplicationRecord
          :confirmable
 
 
-  has_many :batches
-  has_many :incomes
+  has_many :batches, dependent: :destroy
+  has_many :incomes, dependent: :destroy
+  has_many :flocks, dependent: :destroy
+  has_many :expenses, dependent: :destroy
+  has_many :fixed_expenses, dependent: :destroy
 end

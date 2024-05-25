@@ -8,13 +8,12 @@ class FlocksController < ApplicationController
       starts_for_select = Date.strptime(starts, "%m/%d/%Y")
       ends = params[:date_in_between].split(" - ").second
       ends_for_select = Date.strptime(ends, "%m/%d/%Y")
-      @flocks = Flock.where(date_in: starts_for_select..ends_for_select).page(params[:page])
+      @flocks = current_user.flocks.where(date_in: starts_for_select..ends_for_select).page(params[:page])
       @total_flocks = @flocks.map(&:current_stock).sum
-      @searched_flocks = Flock.where(date_in: starts_for_select..ends_for_select)
+      @searched_flocks = current_user.flocks.where(date_in: starts_for_select..ends_for_select)
       @total_searched_flocks = @searched_flocks.map(&:current_stock).sum
     else
-      ##@flocks = Flock.order(:batch_id).page(params[:page])
-      @all_flocks = Flock.order(:batch_id)  
+      @all_flocks = current_user.flocks.order(:batch_id)  
       @total_all_flocks = @all_flocks.map(&:current_stock).sum
       @flocks = @all_flocks.page(params[:page])
       @total_per_flocks_page = @flocks.map(&:current_stock).sum 
@@ -22,7 +21,7 @@ class FlocksController < ApplicationController
 
     @title = "All Flocks"
 
-    @f = Flock.ransack(params[:q])
+    @f = current_user.flocks.ransack(params[:q])
     respond_to do |format|
       format.html
       format.csv { send_data @f.result.to_csv }
@@ -35,7 +34,7 @@ class FlocksController < ApplicationController
 
   # GET /flocks/new
   def new
-    @flock = Flock.new
+    @flock = current_user.flocks.new
   end
 
   # GET /flocks/1/edit
@@ -88,7 +87,7 @@ class FlocksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_flock
-      @flock = Flock.find(params[:id])
+      @flock = current_user.flocks.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

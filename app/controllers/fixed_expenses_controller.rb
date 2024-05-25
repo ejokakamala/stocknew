@@ -8,13 +8,13 @@ class FixedExpensesController < ApplicationController
       starts_for_select = Date.strptime(starts, "%m/%d/%Y")
       ends = params[:date_in_between].split(" - ").second
       ends_for_select = Date.strptime(ends, "%m/%d/%Y")
-      @fixed_expenses = FixedExpense.where(date_in: starts_for_select..ends_for_select).page(params[:page])
+      @fixed_expenses = current_user.fixed_expenses.where(date_in: starts_for_select..ends_for_select).page(params[:page])
       @total_fixed_expenses = @fixed_expenses.map(&:total).sum
-      @searched_fixed_expenses = FixedExpense.where(date: starts_for_select..ends_for_select)
+      @searched_fixed_expenses = current_user.fixed_expenses.where(date: starts_for_select..ends_for_select)
       @total_searched_fixed_expenses = @searched_fixed_expenses.map(&:total).sum
     else
       #@fixed_expenses = FixedExpense.order(params[:id]).page(params[:page])
-      @all_fixed_expenses = FixedExpense.all  
+      @all_fixed_expenses = current_user.fixed_expenses.all  
       @total_all_fixed_expenses = @all_fixed_expenses.map(&:total).sum
       @fixed_expenses = @all_fixed_expenses.page(params[:page])
       @total_fixed_per_page = @fixed_expenses.map(&:total).sum
@@ -22,7 +22,7 @@ class FixedExpensesController < ApplicationController
 
     @title = "All Fixed Expenses"
 
-    @exp = FixedExpense.ransack(params[:q])
+    @exp = current_user.fixed_expenses.ransack(params[:q])
     respond_to do |format|
       format.html
       format.csv { send_data @exp.result.to_csv }
@@ -35,7 +35,7 @@ class FixedExpensesController < ApplicationController
 
   # GET /fixed_expenses/new
   def new
-    @fixed_expense = FixedExpense.new
+    @fixed_expense = current_user.fixed_expenses.new
   end
 
   # GET /fixed_expenses/1/edit
@@ -44,7 +44,7 @@ class FixedExpensesController < ApplicationController
 
   # POST /fixed_expenses or /fixed_expenses.json
   def create
-    @fixed_expense = FixedExpense.new(fixed_expense_params)
+    @fixed_expense = current_user.fixed_expenses.build(fixed_expense_params)
 
     respond_to do |format|
       if @fixed_expense.save
@@ -88,7 +88,7 @@ class FixedExpensesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_fixed_expense
-      @fixed_expense = FixedExpense.find(params[:id])
+      @fixed_expense = current_user.fixed_expenses.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

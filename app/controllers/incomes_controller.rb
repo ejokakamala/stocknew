@@ -15,7 +15,6 @@ class IncomesController < ApplicationController
       @searched_incomes = current_user.incomes.where(date: starts_for_select..ends_for_select)
       @total_searched_incomes = @searched_incomes.map(&:amount).sum
     else
-      #@incomes = Income.order(:batch_id).page(params[:page])
       @all_incomes = current_user.incomes.order(:batch_id)  
       @total_all_incomes = @all_incomes.map(&:amount).sum
       @incomes = @all_incomes.page(params[:page])

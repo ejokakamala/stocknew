@@ -8,17 +8,12 @@ class ExpensesController < ApplicationController
       starts_for_select = Date.strptime(starts, "%m/%d/%Y")
       ends = params[:date_between].split(" - ").second
       ends_for_select = Date.strptime(ends, "%m/%d/%Y")
-      @expenses = Expense.where(date: starts_for_select..ends_for_select).page(params[:page])
+      @expenses = current_user.expenses.where(date: starts_for_select..ends_for_select).page(params[:page])
       @total_expenses = @expenses.map(&:total).sum
-      @searched_expenses = Expense.where(date: starts_for_select..ends_for_select)
+      @searched_expenses = current_user.expenses.where(date: starts_for_select..ends_for_select)
       @total_searched_expenses = @searched_expenses.map(&:total).sum
     else
-      #@expenses = Expense.order(:batch_id).page(params[:page])
-      #@expenses = Expense.paginates_per(:page => params[:page], :per_page => Expense.count)
-      #@expenses = Expense.all
-      #@total_expenses = @expenses.map(&:total).sum
-      #@total_expenses = @expenses
-      @all_expenses = Expense.order(:batch_id)  
+      @all_expenses = current_user.expenses.order(:batch_id)  
       @total_all_expenses = @all_expenses.map(&:total).sum
       @expenses = @all_expenses.page(params[:page])
       @total_per_page = @expenses.map(&:total).sum
@@ -26,7 +21,7 @@ class ExpensesController < ApplicationController
 
     @title = "All Expenses"
 
-    @exp = Expense.ransack(params[:q])
+    @exp = current_user.expenses.ransack(params[:q])
     respond_to do |format|
       format.html
       format.csv { send_data @exp.result.to_csv }
@@ -39,7 +34,7 @@ class ExpensesController < ApplicationController
 
   # GET /expenses/new
   def new
-    @expense = Expense.new
+    @expense = current_user.expenses.new
   end
 
   # GET /expenses/1/edit
@@ -48,7 +43,7 @@ class ExpensesController < ApplicationController
 
   # POST /expenses or /expenses.json
   def create
-    @expense = Expense.new(expense_params)
+    @expense = current_user.expenses.build(expense_params)
 
     respond_to do |format|
       if @expense.save
@@ -92,7 +87,7 @@ class ExpensesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_expense
-      @expense = Expense.find(params[:id])
+      @expense = current_user.expenses.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

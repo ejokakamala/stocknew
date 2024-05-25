@@ -5,9 +5,9 @@ class Batch < ApplicationRecord
 
   belongs_to :user
 
-  has_many :expenses
-  has_many :incomes
-  has_many :flocks
+  has_many :expenses, dependent: :destroy
+  has_many :incomes, dependent: :destroy
+  has_many :flocks, dependent: :destroy
 
   def self.to_csv
     attributes = Batch.column_names
