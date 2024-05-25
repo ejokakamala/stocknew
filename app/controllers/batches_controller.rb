@@ -1,10 +1,9 @@
 class BatchesController < ApplicationController
-  before_action :current_user
   before_action :set_batch, only: %i[ show edit update destroy ]
 
   # GET /batches or /batches.json
   def index
-    @batches = Batch.page(params[:page]).order("created_at ASC")
+    @batches = current_user.batches.page(params[:page]).order("created_at ASC")
     @title = "All Batches"
 
     @b = Batch.ransack(params[:q])
@@ -20,7 +19,7 @@ class BatchesController < ApplicationController
 
   # GET /batches/new
   def new
-    @batch = Batch.new
+    @batch = current_user.batches.new
   end
 
   # GET /batches/1/edit
@@ -29,7 +28,7 @@ class BatchesController < ApplicationController
 
   # POST /batches or /batches.json
   def create
-    @batch = current_user.batches.new(batch_params)
+    @batch = current_user.batches.build(batch_params)
 
     respond_to do |format|
       if @batch.save
@@ -73,7 +72,7 @@ class BatchesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_batch
-      @batch = Batch.find(params[:id])
+      @batch = current_user.batches.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

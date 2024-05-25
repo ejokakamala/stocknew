@@ -1,7 +1,7 @@
 
 <section class="w-full bg-gray-100 dark:bg-gray-900">
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
   <div class="flex flex-col items-center justify-center px-2 mx-auto md:h-screen lg:py-0">
       <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
           <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo">
@@ -38,6 +38,9 @@
                   </div>
                   <p class="text-sm font-light text-gray-500 dark:text-gray-400 mt-3">
                      Don't have an Account? <%= link_to "Sign Up", new_user_registration_path, class: "font-medium text-primary-600 hover:underline dark:text-primary-500" %>
+                  </p>
+                  <p class="text-sm font-light text-gray-500 dark:text-gray-400 mt-3">
+                     Didn't receive confirmation email? <%= link_to "Send confirmation email", new_user_confirmation_path, class: "font-medium text-primary-600 hover:underline dark:text-primary-500" %>
                   </p>
               <% end %>
           </div>

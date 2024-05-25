@@ -3,6 +3,8 @@ require 'csv'
 class Batch < ApplicationRecord
   paginates_per 10
 
+  belongs_to :user
+
   has_many :expenses
   has_many :incomes
   has_many :flocks

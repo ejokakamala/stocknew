@@ -1,5 +1,4 @@
 class FlocksController < ApplicationController
-  before_action :current_user
   before_action :set_flock, only: %i[ show edit update destroy ]
 
   # GET /flocks or /flocks.json
