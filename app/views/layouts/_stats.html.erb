@@ -7,14 +7,14 @@
     <dl class="grid max-w-screen-xl grid-cols-2 gap-4 p-4 mx-auto text-gray-900 sm:grid-cols-3 xl:grid-cols-6 dark:text-white sm:p-8">
       <div class="flex flex-col col-span-2 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <div class="mx-auto">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= @flocks.map(&:current_stock).sum %></h5>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= @current_user.flocks.map(&:current_stock).sum %></h5>
         </div>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 text-center">Total Flocks</p>
         <%= link_to "Show Flocks", flocks_path, class: "inline-flex items-center mx-auto px-3 py-2 text-sm font-medium text-center text-white bg-green-400 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
       </div>
       <div class="flex flex-col col-span-2 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <div class="mx-auto">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= number_to_currency(@incomes.map(&:amount).sum, precision: 0, :unit => "/=", :delimiter => ",", format: "%n %u") %></h5>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= number_to_currency(@current_user.incomes.map(&:amount).sum, precision: 0, :unit => "/=", :delimiter => ",", format: "%n %u") %></h5>
         </div>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 text-center">Total Income</p>
         <%= link_to "Show Incomes", incomes_path, class: "inline-flex items-center mx-auto px-3 py-2 text-sm font-medium text-center text-white bg-green-400 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
@@ -22,7 +22,7 @@
       
       <div class="flex flex-col col-span-2 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <div class="mx-auto">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= number_to_currency(@expenses.map(&:total).sum, precision: 0, :unit => "/=", :delimiter => ",", format: "%n %u") %></h5>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= number_to_currency(@current_user.expenses.map(&:total).sum, precision: 0, :unit => "/=", :delimiter => ",", format: "%n %u") %></h5>
         </div>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 text-center">Total Expense</p>
         <%= link_to "Show Expenses", expenses_path, class: "inline-flex items-center mx-auto px-3 py-2 text-sm font-medium text-center text-white bg-green-400 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
@@ -30,15 +30,15 @@
     </dl>
     <dl class="grid max-w-screen-xl grid-cols-2 gap-4 p-4 mx-auto text-gray-900 sm:grid-cols-3 xl:grid-cols-6 dark:text-white sm:p-8">
       <div class="flex flex-col col-span-2 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <h5 class="mb-2 text-2xl text-center font-bold tracking-tight text-gray-900 dark:text-white"><%= number_to_currency(@fixed_expenses.map(&:total).sum, precision: 0, :unit => "/=", :delimiter => ",", format: "%n %u") %></h5>
+        <h5 class="mb-2 text-2xl text-center font-bold tracking-tight text-gray-900 dark:text-white"><%= number_to_currency(@current_user.fixed_expenses.map(&:total).sum, precision: 0, :unit => "/=", :delimiter => ",", format: "%n %u") %></h5>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 text-center">Total Fixed Expense</p>
         <%= link_to "Show Fixed Expenses", fixed_expenses_path, class: "inline-flex items-center mx-auto px-3 py-2 text-sm font-medium text-center text-white bg-green-400 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
       </div>
       <div class="flex flex-col col-span-2 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <h5 class="mb-2 mx-auto text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-          <% if @incomes.map(&:amount).sum > @expenses.map(&:total).sum %>
+          <% if @current_user.incomes.map(&:amount).sum > @current_user.expenses.map(&:total).sum %>
           <span>
-            <strong><%= number_to_currency(@incomes.map(&:amount).sum - @expenses.map(&:total).sum, precision: 0, :unit => "/=", format: "%n %u") %><strong>
+            <strong><%= number_to_currency(@current_user.incomes.map(&:amount).sum - @current_user.expenses.map(&:total).sum, precision: 0, :unit => "/=", format: "%n %u") %><strong>
           </span>
           <% else %>
             <span><strong> 0</strong></span>
@@ -49,9 +49,9 @@
 
       <div class="flex flex-col col-span-2 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <h5 class="mb-2 mx-auto text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-          <% if @incomes.map(&:amount).sum < @expenses.map(&:total).sum %>
+          <% if @current_user.incomes.map(&:amount).sum < @current_user.expenses.map(&:total).sum %>
             <span>
-              <strong><%= number_to_currency(@expenses.map(&:total).sum - @incomes.map(&:amount).sum, precision: 0, :unit => "/=", format: "%n %u")  %><strong>
+              <strong><%= number_to_currency(@current_user.expenses.map(&:total).sum - @current_user.incomes.map(&:amount).sum, precision: 0, :unit => "/=", format: "%n %u")  %><strong>
             </span>
             <% else %>
               <span><strong>0</strong></span>
