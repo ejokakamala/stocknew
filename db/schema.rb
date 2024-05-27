@@ -65,7 +65,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_27_084835) do
     t.bigint "batch_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id", default: 2, null: false
+    t.bigint "user_id", null: false
     t.index ["batch_id"], name: "index_flocks_on_batch_id"
     t.index ["user_id"], name: "index_flocks_on_user_id"
   end
