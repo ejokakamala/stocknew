@@ -19,7 +19,7 @@ class Flock < ApplicationRecord
   # end
 
   def age_in_weeks
-    ((Time.now.to_date - date_in)/7).to_f.round(1)
+    ((Time.now.to_date - date_in.to_date)/7).to_f.round(1)
   end
 
   def self.to_csv

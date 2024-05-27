@@ -12,6 +12,7 @@ class CreateFlocks < ActiveRecord::Migration[7.1]
       t.string :status
       t.integer :sold_stock, default: 0
       t.references :batch, null: false, foreign_key: true
+      t.references :user, null: false, default: 2, foreign_key: true
 
       t.timestamps
     end
