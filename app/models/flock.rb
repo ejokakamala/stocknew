@@ -13,7 +13,7 @@ class Flock < ApplicationRecord
   #used_stock = died_stock + sold_stock
  
   def latest_stock
-    initial_stock - died_stock - sold_stock
+    initial_stock.to_i - (died_stock.to_i + sold_stock.to_i)
   end
 
   def age_in_weeks
