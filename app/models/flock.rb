@@ -9,7 +9,7 @@ class Flock < ApplicationRecord
 
   belongs_to :batch
   belongs_to :user
-
+ 
   def latest_stock
     initial_stock - (died_stock + sold_stock)
   end
