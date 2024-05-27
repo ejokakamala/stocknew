@@ -93,10 +93,10 @@
                   <%= flock.batch.batch_no %>
                 </th>
                 <td class="py-4 pl-2">
-                  <%= flock.date_in.to_date.strftime('%d %b %Y') %>
+                  <%= flock.date_in.strftime('%d %b %Y') %>
                 </td>
                 <td class="py-4 pl-2">
-                  <%= flock.retirement_date.to_date.strftime('%d %b %Y') %>
+                  <%= flock.retirement_date.strftime('%d %b %Y') %>
                 </td>
                 <td class="py-4 pl-2">
                   <%= flock.source.capitalize %>

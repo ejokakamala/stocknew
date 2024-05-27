@@ -3,9 +3,7 @@ require 'csv'
 class Flock < ApplicationRecord
   paginates_per 10
 
-  validates :date_in, presence: true
   validates :initial_stock, presence: true
-  validates :retirement_date, presence: true
 
   belongs_to :batch
   belongs_to :user
