@@ -9,14 +9,12 @@ class Flock < ApplicationRecord
 
   belongs_to :batch
   belongs_to :user
+
+  #used_stock = died_stock + sold_stock
  
   def latest_stock
-    initial_stock - (died_stock + sold_stock)
+    initial_stock - died_stock - sold_stock
   end
-
-  # def age_in_weeks
-  #   ((Time.now.to_date - date_in)/7).to_f.round(1)
-  # end
 
   def age_in_weeks
     ((Time.now.to_date - date_in.to_date)/7).to_f.round(1)
