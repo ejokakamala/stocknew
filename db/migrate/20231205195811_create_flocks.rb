@@ -5,7 +5,7 @@ class CreateFlocks < ActiveRecord::Migration[7.1]
       t.datetime :date_in
       t.date :retirement_date
       t.string :source
-      t.integer :initial_stock
+      t.integer :initial_stock, default: 0
       t.integer :died_stock, default: 0
       t.integer :age
       t.text :notes

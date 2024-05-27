@@ -43,7 +43,7 @@
               <%= batch.batch_no %>
             </th>
             <td class="p-4 text-right font-medium text-gray-900 whitespace-nowrap dark:text-white border border-slate-300">
-              <%= batch.flocks.map(&:current_stock).sum %>
+              <%= batch.flocks.map(&:latest_stock).sum %>
             </td>
             <td class="p-4 text-right font-medium text-gray-900 whitespace-nowrap dark:text-white border border-slate-300">
               <%= number_to_currency(batch.incomes.map(&:amount).sum, :unit => "/=", precision: 0, format: "%n%u") %>

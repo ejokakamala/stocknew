@@ -1,6 +1,11 @@
 require 'csv'
 
 class Expense < ApplicationRecord
+
+  validates :unit_price, presence: true
+  validates :quantity, presence: true 
+  validates :date, presence: true 
+  
   belongs_to :batch
   belongs_to :user
 

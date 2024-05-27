@@ -9,14 +9,14 @@ class FlocksController < ApplicationController
       ends = params[:date_in_between].split(" - ").second
       ends_for_select = Date.strptime(ends, "%m/%d/%Y")
       @flocks = current_user.flocks.where(date_in: starts_for_select..ends_for_select).page(params[:page])
-      @total_flocks = @flocks.map(&:current_stock).sum
+      @total_flocks = @flocks.map(&:latest_stock).sum
       @searched_flocks = current_user.flocks.where(date_in: starts_for_select..ends_for_select)
-      @total_searched_flocks = @searched_flocks.map(&:current_stock).sum
+      @total_searched_flocks = @searched_flocks.map(&:latest_stock).sum
     else
       @all_flocks = current_user.flocks.order(:batch_id)  
-      @total_all_flocks = @all_flocks.map(&:current_stock).sum
+      @total_all_flocks = @all_flocks.map(&:latest_stock).sum
       @flocks = @all_flocks.page(params[:page])
-      @total_per_flocks_page = @flocks.map(&:current_stock).sum 
+      @total_per_flocks_page = @flocks.map(&:latest_stock).sum 
     end
 
     @title = "All Flocks"

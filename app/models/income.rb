@@ -1,6 +1,11 @@
 require 'csv'
 
 class Income < ApplicationRecord
+  
+  validates :unit_price, presence: true
+  validates :quantity, presence: true 
+  validates :date, presence: true 
+  
   paginates_per 10
 
   belongs_to :batch
