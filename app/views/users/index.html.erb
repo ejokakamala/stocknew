@@ -2,7 +2,10 @@
 <% @users.each do |user| %>
   User email: <%= user.email %>,
   User Id: <%= user.id %>,
-  batch: <%= user.batches.ids %>
+  Batch: <%= user.batches.ids %>,
+  Flock: <%= user.flocks.ids %>,
+  Income: <%= user.incomes.ids %>,
+  Expense: <%= user.expenses.ids %>
   <br />
 <% end %>
 </div>
