@@ -1,6 +1,8 @@
 <div class="mt-10">
 <% @users.each do |user| %>
-  User email: <%= user.email %>
-  User Id: <%= user.id %><br />
+  User email: <%= user.email %>,
+  User Id: <%= user.id %>,
+  batch: <%= user.batches.ids %>
+  <br />
 <% end %>
 </div>
