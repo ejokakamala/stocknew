@@ -19,7 +19,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_25_102015) do
     t.string "flock_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id", default: 1, null: false
+    t.bigint "user_id", default: 2, null: false
     t.index ["user_id"], name: "index_batches_on_user_id"
   end
 
