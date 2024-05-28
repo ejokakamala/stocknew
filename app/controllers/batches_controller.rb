@@ -3,7 +3,7 @@ class BatchesController < ApplicationController
 
   # GET /batches or /batches.json
   def index
-    @batches = current_user.batches.page(params[:page]).order("created_at ASC")
+    @batches = current_user.batches.all.page(params[:page]).order("created_at ASC")
     @title = "All Batches"
 
     @b = current_user.batches.ransack(params[:q])

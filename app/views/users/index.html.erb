@@ -1,11 +1,12 @@
 <div class="mt-10">
 <% @users.each do |user| %>
-  User email: <%= user.email %>,
-  User Id: <%= user.id %>,
-  Batch: <%= user.batches.ids %>,
-  Flock: <%= user.flocks.ids %>,
-  Income: <%= user.incomes.ids %>,
-  Expense: <%= user.expenses.ids %>
-  <br />
+  <p>User email: <%= user.email %></p>
+  <div class="ml-2 py-2">
+  <p>User Id: <%= user.id %></p>
+  <p>Batch: <%= user.batches.ids %></p>
+  <p>Flock: <%= user.flocks.ids %></p>
+  <p>Income: <%= user.incomes.ids %> </p>
+  <p>Expense: <%= user.expenses.ids %></p>
+  </div>
 <% end %>
 </div>
