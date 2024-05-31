@@ -47,9 +47,20 @@ class ExpensesController < ApplicationController
 
     respond_to do |format|
       if @expense.save
+        format.turbo_stream do 
+          render turbo_stream: [
+            turbo_stream.update('new_expense', partial: "expenses/form", locals: { expense: current_user.expenses.new } ),
+            turbo_stream.prepend('expenses', partial: "expenses/expense", locals: { expense: @expense } )
+          ]
+        end
         format.html { redirect_to expense_url(@expense), notice: "Expense was successfully created." }
         format.json { render :show, status: :created, location: @expense }
       else
+        format.turbo_stream do 
+          render turbo_stream: [
+            turbo_stream.update('new_expense', partial: "expenses/form", locals: { expense: @expense } )
+          ]
+        end
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @expense.errors, status: :unprocessable_entity }
       end
@@ -80,9 +91,54 @@ class ExpensesController < ApplicationController
   end
 
   def import
-    Expense.import(params[:file]) 
+    Expense.import(params[:file], current_user) 
     redirect_to expenses_path, notice: "Expenses imported"
   end
+
+  def import_data(xlsx_path)
+    xlsx = Roo::Spreadsheet.open(path[:xlsx_path])
+    xlsx.sheet(0).each_with_index(date: 'date', category: 'category', 
+                                  quantity: 'quantity', unit_price: 'unit_price', total_amount: 'total_amount', 
+                                  description: 'description', batch_id: 'batch_id') do |row, row_index|
+                                  
+        next if row_index == 0 || User.find_by(username: row[:username]).present?
+
+        User.create(
+            firstname: row[:firstname],
+            lastname: row[:lastname],
+            username: row[:username],
+            email: row[:email],
+            age: row[:age]
+        )
+    end
+  end
+
+  def bulk_add_data
+    file = params[:xml_file]
+    xlsx = Roo::Spreadsheet.open(file, extension: :xlsx)
+    count = xlsx.count
+    for i in 1...count do
+      batch_no = xlsx.row(i+1)[0]
+      date = xlsx.row(i+1)[1]
+      category = xlsx.row(i+1)[2]
+      quantity = xlsx.row(i+1)[3]
+      unit_price = xlsx.row(i+1)[4]
+      total_amount = xlsx.row(i+1)[5]
+      description = xlsx.row(i+1)[6]
+
+      @expenses = current_user.expenses.new(
+                                            batch_id: batch_no, 
+                                            date: date, 
+                                            category: category, 
+                                            quantity: quantity, 
+                                            unit_price: unit_price,
+                                            description: description
+                                          )
+      @expenses.save
+    end
+    redirect_to expenses_path, notice: "Expenses imported"
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

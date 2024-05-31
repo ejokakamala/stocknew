@@ -72,3 +72,5 @@ gem "kaminari", "~> 1.2"
 gem "ransack", "~> 4.1"
 
 
+
+gem "roo-xls", "~> 1.2"

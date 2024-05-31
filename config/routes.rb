@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       root 'devise/sessions#new', as: :unauthenticated_root
     end
   end
-  
+   
   
   resources :flocks do
     collection { post :import }
@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   end
   resources :expenses do
     collection { post :import }
+    #collection { post :bulk_add_data }
   end
   resources :batches do 
     collection { post :import }

@@ -6,6 +6,16 @@
 
   <hr class="my-4" />
 
+  <h2 class="mt-3">Import Expenses</h2>
+
+  <%= form_tag bulk_add_data_expenses_path, multipart: true do %>
+    <%= file_field_tag :xml_file %>
+    <%= submit_tag "Submit" %>
+  <% end %>
+
+  <hr class="my-4" />
+
   <%= render "form", expense: @expense %>
 
 </div>
+
