@@ -30,5 +30,3 @@ namespace :util do
   end
 
 end
-
-#rake util:fix_previous_baches RAILS_ENV=production
