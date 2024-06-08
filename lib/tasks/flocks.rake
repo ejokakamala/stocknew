@@ -14,13 +14,13 @@ namespace :util do
   task fix_previous_batches: :environment do
     ## select * from incomes i join batches b on b.id = i.batch_id
     
-    list = Income.includes(:batch).where(batch_id: 42)
+    list = Income.includes(:batch).where(batch_id: 52)
 
     list.each do |item|
-      item.update_attribute(:batch_id, 122)
+      item.update_attribute(:batch_id, 123)
     end  
     
-    shapiro = Batch.find_by(batch_no: 20220913)
+    shapiro = Batch.find_by(batch_no: 20220914)
     puts shapiro.id
   end
 
