@@ -34,10 +34,10 @@ namespace :util do
     puts mine.id
 
     another = Batch.find_by(batch_no: 20220702)
-    puts another 
+    puts another.id
     
     shapiro = Batch.find_by(batch_no: 20220705)
-    puts shapiro
+    puts shapiro.id
   end
 
 end
