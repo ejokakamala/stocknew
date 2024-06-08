@@ -16,7 +16,8 @@ namespace :util do
     list = Income.includes(:batch).where(batch_id: 116)
 
     list.each do |item|
-      item.update({:batch_id => 116 })
+      item.update_attribute({:batch_id => 116 })
+      notice: "Income was successfully updated." 
       puts item.batch.batch_no
     end
     
