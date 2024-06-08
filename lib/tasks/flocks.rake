@@ -17,7 +17,7 @@ namespace :util do
 
     list.each do |item|
       item.update_attribute(:batch_id, 116)
-      puts item.batch.batch_no
+      puts item.batch_id
     end  
   end
 end
