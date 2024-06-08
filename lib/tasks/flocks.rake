@@ -22,17 +22,14 @@ namespace :util do
     # my_list.push(list)
     # puts my_list
 
-    puts list.batch.batch_no
+    #puts list.batch.batch_no
     
     #list.update_attribute(:batch_id, 116)
 
 
-    # list.each do |item|
-    #   puts item.id
-      
-    #   #item.update_all(:batch_id, 116)
-    #   #puts item.batch_id
-    # end  
+    list.each do |item|
+      item.update_attribute(:batch_id, 116)
+    end  
   end
 
 end
