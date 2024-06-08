@@ -17,8 +17,7 @@ namespace :util do
     correctBatchId = correctBatch.id
     list = Income.find(1312)
     #list = Income.includes(correctBatch).where(id = 1312)
-    list.batch.batch_no = correctBatch.batch_no
-    list.update!
+    list.update!(batch_id: correctBatchId)
 
     puts list.batch.batch_no
     # list.each do |item|
