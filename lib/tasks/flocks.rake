@@ -30,7 +30,11 @@ namespace :util do
     # list.each do |item|
     #   item.update_attribute(:batch_id, 116)
     # end  
-    puts Batch.pluck(:id)
+    mine = Batch.pluck(:id)
+    mine.each do |m| 
+      puts m.id
+      puts m.batch_no
+    end
   end
 
 end
