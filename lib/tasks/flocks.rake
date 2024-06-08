@@ -13,13 +13,15 @@ namespace :util do
 
   task fix_previous_batches: :environment do
     ## selct * from incomes i join batchs b on b.id = i.batch_id
-    correctBatch = Batch.where(Batch.batch_no = 20220703)
-    list = Income.includes(:batch).where(id = 1312)
-    list.each do |item|
-      item.batch_id = correctBatch.id
-      item.save
-      puts item
-    end
+    correctBatch = Batch.find_by(batch_no: 20220703)
+    list = Income.includes(correctBatch).where(id = 1312)
+    list.batch_id = correctBatch.id 
+    list.save
+    # list.each do |item|
+    #   item.batch_id = correctBatch.id
+    #   item.save
+    #   puts item
+    # end
   end
 end
 
