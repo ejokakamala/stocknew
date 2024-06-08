@@ -19,6 +19,8 @@ namespace :util do
     # list.update!(batch_id: correctBatchId)
     puts list.id 
     puts list.description
+    puts list.batch_id
+    puts list.batch.batch_no
   end
 end
 
