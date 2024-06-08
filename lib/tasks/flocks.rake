@@ -19,15 +19,7 @@ namespace :util do
       item.update_attribute(:batch_id, 116)
       notice: "Income was successfully updated." 
       puts item.batch.batch_no
-    end
-    
-    #correctBatchId = correctBatch.id
-    # list = Income.find(1315)
-    # list.update({:batch_id => 116 })
-    # puts list.description
-    # puts list.batch_id
-    # puts list.batch.batch_no
-
+    end  
   end
 end
 
