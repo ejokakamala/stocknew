@@ -15,7 +15,7 @@ namespace :util do
     ## selct * from incomes i join batchs b on b.id = i.batch_id
     correctBatch = Batch.find_by(batch_no: 20220703)
     correctBatchId = correctBatch.id
-    list = Income.find_by(batch_id: correctBatchId)
+    list = Income.find(1312)
     #list = Income.includes(correctBatch).where(id = 1312)
     list.batch_id = correctBatchId
     list.save
