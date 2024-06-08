@@ -14,17 +14,17 @@ namespace :util do
   task fix_previous_batches: :environment do
     ## select * from incomes i join batches b on b.id = i.batch_id
     
-    # list = Expense.includes(:batch).where(batch_id: 79)
-    # my_list = Expense.includes(:batch).where(batch_id: 77)
+    list = Expense.includes(:batch).where(batch_id: 54)
+    my_list = Expense.includes(:batch).where(batch_id: 56)
     # list_new = Expense.includes(:batch).where(batch_id: 78)
 
-    # list.each do |item|
-    #   item.update_attribute(:batch_id, 141)
-    # end  
+    list.each do |item|
+      item.update_attribute(:batch_id, 124)
+    end  
 
-    # my_list.each do |item|
-    #   item.update_attribute(:batch_id, 142)
-    # end  
+    my_list.each do |item|
+      item.update_attribute(:batch_id, 125)
+    end  
 
     # list_new.each do |item|
     #   item.update_attribute(:batch_id, 140)
@@ -34,14 +34,14 @@ namespace :util do
     #   mine.update(attribute(:batch_id, 127))
     # end
     
-    shapiro = Batch.find_by(batch_no: 20220914)
+    shapiro = Batch.find_by(batch_no: 20221217)
     puts shapiro.id
 
-    shapiro_new = Batch.find_by(batch_no: 20221016)
+    shapiro_new = Batch.find_by(batch_no: 20221218)
     puts shapiro_new.id
 
-    # shapiro_newer = Batch.find_by(batch_no: 20240334)
-    # puts shapiro_newer.id
+    shapiro_newer = Batch.find_by(batch_no: 20230119)
+    puts shapiro_newer.id
   end
 
 end
