@@ -14,7 +14,10 @@ namespace :util do
   task fix_previous_batches: :environment do
     ## select * from incomes i join batches b on b.id = i.batch_id
     list = Income.includes(:batch).where(batch_id: 116)
-    list.update_all(batch_id: 116)
+    # list.update_all(batch_id: 116)
+
+    list.collect{|x| x.update_attribute(:batch_id, 116)}
+
 
     # list.each do |item|
     #   item.update_all(:batch_id, 116)
