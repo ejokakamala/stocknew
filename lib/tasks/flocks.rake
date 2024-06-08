@@ -14,12 +14,12 @@ namespace :util do
   task fix_previous_batches: :environment do
     ## select * from incomes i join batches b on b.id = i.batch_id
     
-    list = Expense.includes(:batch).where(batch_id: 67)
-    my_list = Expense.includes(:batch).where(batch_id: 69)
-    list_new = Expense.includes(:batch).where(batch_id: 70)
-    list1 = Expense.includes(:batch).where(batch_id: 72)
-    my_list1 = Expense.includes(:batch).where(batch_id: 73)
-    list_new1 = Expense.includes(:batch).where(batch_id: 74)
+    list = Expense.includes(:batch).where(batch_id: 138)
+    my_list = Expense.includes(:batch).where(batch_id: 139)
+    list_new = Expense.includes(:batch).where(batch_id: 140)
+    list1 = Expense.includes(:batch).where(batch_id: 141)
+    my_list1 = Expense.includes(:batch).where(batch_id: 142)
+    # list_new1 = Expense.includes(:batch).where(batch_id: 74)
 
     list.each do |item|
       item.update_attribute(:batch_id, 132)
@@ -41,9 +41,9 @@ namespace :util do
       item.update_attribute(:batch_id, 136)
     end  
 
-    list_new1.each do |item|
-      item.update_attribute(:batch_id, 137)
-    end  
+    # list_new1.each do |item|
+    #   item.update_attribute(:batch_id, 137)
+    # end  
 
     # my_list.each do |mine|
     #   mine.update(attribute(:batch_id, 127))
