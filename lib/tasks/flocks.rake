@@ -14,34 +14,49 @@ namespace :util do
   task fix_previous_batches: :environment do
     ## select * from incomes i join batches b on b.id = i.batch_id
     
-    list = Expense.includes(:batch).where(batch_id: 63)
-    my_list = Expense.includes(:batch).where(batch_id: 65)
-    list_new = Expense.includes(:batch).where(batch_id: 66)
+    list = Expense.includes(:batch).where(batch_id: 67)
+    my_list = Expense.includes(:batch).where(batch_id: 69)
+    list_new = Expense.includes(:batch).where(batch_id: 70)
+    list1 = Expense.includes(:batch).where(batch_id: 72)
+    my_list1 = Expense.includes(:batch).where(batch_id: 73)
+    list_new1 = Expense.includes(:batch).where(batch_id: 74)
 
     list.each do |item|
-      item.update_attribute(:batch_id, 129)
+      item.update_attribute(:batch_id, 132)
     end  
 
     my_list.each do |item|
-      item.update_attribute(:batch_id, 130)
+      item.update_attribute(:batch_id, 133)
     end  
 
     list_new.each do |item|
-      item.update_attribute(:batch_id, 131)
+      item.update_attribute(:batch_id, 134)
+    end  
+
+    list1.each do |item|
+      item.update_attribute(:batch_id, 135)
+    end  
+
+    my_list1.each do |item|
+      item.update_attribute(:batch_id, 136)
+    end  
+
+    list_new1.each do |item|
+      item.update_attribute(:batch_id, 137)
     end  
 
     # my_list.each do |mine|
     #   mine.update(attribute(:batch_id, 127))
     # end
     
-    shapiro = Batch.find_by(batch_no: 20230324)
-    puts shapiro.id
+    # shapiro = Batch.find_by(batch_no: 20230324)
+    # puts shapiro.id
 
-    shapiro_new = Batch.find_by(batch_no: 20230326)
-    puts shapiro_new.id
+    # shapiro_new = Batch.find_by(batch_no: 20230326)
+    # puts shapiro_new.id
 
-    shapiro_newer = Batch.find_by(batch_no: 20230627)
-    puts shapiro_newer.id
+    # shapiro_newer = Batch.find_by(batch_no: 20230627)
+    # puts shapiro_newer.id
   end
 
 end
