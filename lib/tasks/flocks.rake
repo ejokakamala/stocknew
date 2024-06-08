@@ -16,11 +16,12 @@ namespace :util do
     correctBatch = Batch.find_by(batch_no: 20220703)
     correctBatchId = correctBatch.id
     list = Income.find(1315)
-    # list.update!(batch_id: correctBatchId)
+    list.update_attributes(batch_id: correctBatchId)
     puts list.id 
     puts list.description
     puts list.batch_id
     puts list.batch.batch_no
+
   end
 end
 
