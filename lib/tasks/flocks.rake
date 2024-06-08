@@ -18,7 +18,9 @@ namespace :util do
     #list.collect{|x| x.update_attribute(:batch_id, 116)}
     
     list = Income.includes(:batch).where(batch_id: 116)
-    puts list
+    my_list = []
+    my_list.push(list)
+    puts my_list
 
     #list = Income.find(1331)
     #list.update_attribute(:batch_id, 116)
