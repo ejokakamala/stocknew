@@ -17,7 +17,6 @@ namespace :util do
 
     list.each do |item|
       item.update_attribute(:batch_id, 116)
-      notice: "Income was successfully updated." 
       puts item.batch.batch_no
     end  
   end
