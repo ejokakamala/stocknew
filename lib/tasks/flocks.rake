@@ -25,7 +25,7 @@ namespace :util do
     #   mine.update(attribute(:batch_id, 127))
     # end
     
-    shapiro = Batch.find_by(batch_no: 20230304)
+    shapiro = Batch.find_by(batch_no: 20230324)
     puts shapiro.id
   end
 
