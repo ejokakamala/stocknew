@@ -17,7 +17,7 @@ namespace :util do
     # list.update_all(batch_id: 116)
     #list.collect{|x| x.update_attribute(:batch_id, 116)}
     
-    list = Income.includes(:batch).where(batch_id: 3)
+    #list = Income.includes(:batch).where(batch_id: 3)
     # my_list = []
     # my_list.push(list)
     # puts my_list
@@ -27,9 +27,10 @@ namespace :util do
     #list.update_attribute(:batch_id, 116)
 
 
-    list.each do |item|
-      item.update_attribute(:batch_id, 116)
-    end  
+    # list.each do |item|
+    #   item.update_attribute(:batch_id, 116)
+    # end  
+    Batch.pluck(:id)
   end
 
 end
