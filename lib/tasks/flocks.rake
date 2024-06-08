@@ -15,7 +15,11 @@ namespace :util do
     ## select * from incomes i join batches b on b.id = i.batch_id
     #correctBatch = Batch.find_by(batch_no: 20220703)
     list = Income.includes(:batch).where(batch_id: 116)
-    list.update({:batch_id => 116 })
+
+    list.each do |item|
+      item.update({:batch_id => 116 })
+    end
+    
     #correctBatchId = correctBatch.id
     # list = Income.find(1315)
     # list.update({:batch_id => 116 })
