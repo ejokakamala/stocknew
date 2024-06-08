@@ -18,18 +18,20 @@ namespace :util do
     #list.collect{|x| x.update_attribute(:batch_id, 116)}
     
     list = Income.includes(:batch).where(batch_id: 116)
-    my_list = []
-    my_list.push(list)
-    puts my_list
+    # my_list = []
+    # my_list.push(list)
+    # puts my_list
 
     #list = Income.find(1331)
     #list.update_attribute(:batch_id, 116)
 
 
-    # list.each do |item|
-    #   item.update_all(:batch_id, 116)
-    #   #puts item.batch_id
-    # end  
+    list.each do |item|
+      puts item 
+      puts count+1
+      #item.update_all(:batch_id, 116)
+      #puts item.batch_id
+    end  
   end
 
 end
