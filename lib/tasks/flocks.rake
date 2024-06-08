@@ -27,8 +27,8 @@ namespace :util do
 
 
     list.each do |item|
-      puts item 
-      puts count+1
+      puts item.id
+      
       #item.update_all(:batch_id, 116)
       #puts item.batch_id
     end  
