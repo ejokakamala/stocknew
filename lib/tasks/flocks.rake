@@ -19,7 +19,7 @@ namespace :util do
     #correctBatchId = correctBatch.id
     # list = Income.find(1315)
     # list.update({:batch_id => 116 })
-    puts list.id 
+    puts list.ids
     puts list.description
     puts list.batch_id
     puts list.batch.batch_no
