@@ -17,9 +17,11 @@ namespace :util do
 
     list.each do |item|
       item.update_attribute(:batch_id, 116)
-      puts item.batch_id
+      #puts item.batch_id
     end  
   end
+
+  puts list.batch_ids
 end
 
 #rake util:fix_previous_baches RAILS_ENV=production
